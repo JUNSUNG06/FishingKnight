@@ -13,9 +13,20 @@ public class InputSO<T> : ScriptableObject
     protected virtual void OnEnable()
     {
         Debug.Log($"Set InputSO : {inputMapType}");
+        inputActions = new Dictionary<T, Action<CallbackContext>>();
         foreach (T type in Enum.GetValues(typeof(T)))
         {
             inputActions.Add(type, null);
         }
+    }
+
+    public void RegistAction(T type, Action<CallbackContext> action)
+    {
+        inputActions[type] += action;
+    }
+
+    public void UnregistAction(T type, Action<CallbackContext> action)
+    {
+        inputActions[type] -= action;
     }
 }

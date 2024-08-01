@@ -16,6 +16,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Initialize()
     {
+        compDictionary = new Dictionary<Type, EntityComponent>();
         foreach (EntityComponent comp in comps)
         {
             Type type = comp.GetType();
