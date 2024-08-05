@@ -19,7 +19,6 @@ public class Character : Entity, IDamage
         healthComp = GetEntityComponent<CharacterHealth>();
         movement = GetEntityComponent<CharacterMove>();
 
-
         //test
         InputManager.ChangeInputMap(InputMapType.Play);
         input.RegistAction(PlayInputActionType.Move, Move);

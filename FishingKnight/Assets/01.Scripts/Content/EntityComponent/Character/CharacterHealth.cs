@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CharacterHealth : EntityComponent
+public class CharacterHealth : CharacterComponent
 {
     [SerializeField][Min(0f)] private float maxHealth;
     private float health;

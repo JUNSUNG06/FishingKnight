@@ -13,4 +13,6 @@ public class EntityComponent : MonoBehaviour
     }
 
     public virtual void PostInitializeComponent() { }
+
+    public virtual void UpdateComponent() { }
 }

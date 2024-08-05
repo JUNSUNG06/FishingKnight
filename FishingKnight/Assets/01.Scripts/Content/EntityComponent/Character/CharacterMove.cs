@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
-public class CharacterMove : EntityComponent
+public class CharacterMove : CharacterComponent
 {
     private Rigidbody rb;
 

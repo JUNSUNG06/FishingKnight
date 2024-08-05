@@ -14,6 +14,14 @@ public class Entity : MonoBehaviour
         PostInitializeComponent();
     }
 
+    private void Update()
+    {
+        for(int i = 0; i < comps.Count; i++)
+        {
+            comps[i].UpdateComponent();
+        }
+    }
+
     protected virtual void Initialize()
     {
         compDictionary = new Dictionary<Type, EntityComponent>();
