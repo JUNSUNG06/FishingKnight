@@ -12,6 +12,7 @@ public class FSMTransition : FSMObject
     {
         base.Initialize(owner);
 
+        decisions = new List<FSMDecision>();
         GetComponents<FSMDecision>(decisions);
         foreach (FSMDecision decision in decisions)
         {
@@ -29,10 +30,16 @@ public class FSMTransition : FSMObject
 
     public override void UpdateState()
     {
+        bool result = false;
+
         foreach (FSMDecision decision in decisions)
         {
             decision.UpdateState();
+            result |= decision.IsSatisfy();
         }
+
+        if (result)
+            owner.FSM.ChangeState(nextState);
     }
 
     public override void ExitState()

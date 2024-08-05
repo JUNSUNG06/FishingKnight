@@ -4,5 +4,14 @@ using UnityEngine;
 
 public abstract class FSMDecision : FSMObject
 {
-    public abstract bool IsSatisfy();
+    [SerializeField] private bool revert;
+    protected bool result;
+
+    public virtual bool IsSatisfy()
+    {
+        if (revert)
+            return !result;
+
+        return false;
+    }
 }

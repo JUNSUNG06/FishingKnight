@@ -7,7 +7,7 @@ public class CharacterFSM : CharacterComponent
 {
     [SerializeField] private FSMState defaultState;
 
-    private Dictionary<Type, FSMState> states;
+    private List<FSMState> states;
 
     private FSMState currentState;
 
@@ -15,11 +15,11 @@ public class CharacterFSM : CharacterComponent
     {
         base.Initialize(owner);
 
-        states = new Dictionary<Type, FSMState>();
-        foreach(Transform child in transform)
+        states = new List<FSMState>();
+        foreach(Transform child in transform.Find("States"))
         {
             if(child.TryGetComponent<FSMState>(out FSMState state))
-                states.Add(state.GetType(), state);
+                states.Add(state);
         }
     }
 
@@ -27,9 +27,9 @@ public class CharacterFSM : CharacterComponent
     {
         base.PostInitializeComponent();
 
-        foreach(var pair in states)
+        foreach(var state in states)
         {
-            pair.Value.Initialize(owner);
+            state.Initialize(Character);
         }
 
         ChangeState(defaultState);
@@ -39,7 +39,7 @@ public class CharacterFSM : CharacterComponent
     {
         base.UpdateComponent();
 
-        currentState.UpdateState();
+        currentState?.UpdateState();
     }
 
     public void ChangeState(FSMState nextState)
@@ -49,9 +49,9 @@ public class CharacterFSM : CharacterComponent
         currentState.EnterState();
     }
 
-    public void ChangeState(Type nextStateType)
+    public void ChangeState(Type type)
     {
-        FSMState nextState = states[nextStateType];
+        FSMState nextState = states.Find(x => x.GetType() == type);
 
         currentState?.ExitState();
         currentState = nextState;

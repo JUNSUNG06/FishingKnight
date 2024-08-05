@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EntityComponent : MonoBehaviour
 {
-    protected Entity owner;
-    public Entity Owner => owner;
+    protected Entity entity;
+    public Entity Entity => entity;
 
     public virtual void Initialize(Entity owner)
     {
-        this.owner = owner;
+        entity = owner;
     }
 
     public virtual void PostInitializeComponent() { }

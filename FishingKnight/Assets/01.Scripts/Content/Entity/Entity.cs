@@ -28,7 +28,7 @@ public class Entity : MonoBehaviour
         foreach (EntityComponent comp in comps)
         {
             Type type = comp.GetType();
-            while (type != typeof(EntityComponent))
+            while (type.Name != $"{GetType()}Component")
             {
                 compDictionary.Add(type, comp);
                 type = comp.GetType().BaseType;

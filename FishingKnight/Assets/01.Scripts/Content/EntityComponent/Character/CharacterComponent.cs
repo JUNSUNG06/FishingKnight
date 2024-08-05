@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CharacterComponent : EntityComponent
 {
-    new protected Character owner;
-    new public Character Owner => owner;
+    protected Character character;
+    public Character Character => character;
 
     public override void Initialize(Entity owner)
     {
         base.Initialize(owner);
 
-        this.owner = owner as Character;
+        character = owner as Character;
     }
 }
