@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class FSMObject : MonoBehaviour
 {
-    protected Character owner;
-    public virtual void Initialize(Character owner)
+    protected Character character;
+    public virtual void Initialize(Character character)
     {
-        this.owner = owner;
+        this.character = character;
     }
 
     public virtual void EnterState() { }

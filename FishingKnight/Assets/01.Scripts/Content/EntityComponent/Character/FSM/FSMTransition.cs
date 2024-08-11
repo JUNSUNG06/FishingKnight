@@ -22,31 +22,32 @@ public class FSMTransition : FSMObject
 
     public override void EnterState()
     {
-        foreach (FSMDecision decision in decisions)
+        for (int i = 0; i < decisions.Count; i++)
         {
-            decision.EnterState();
+            decisions[i].EnterState();
         }
     }
 
     public override void UpdateState()
     {
-        bool result = false;
-
-        foreach (FSMDecision decision in decisions)
+        for (int i = 0; i < decisions.Count; i++)
         {
-            decision.UpdateState();
-            result |= decision.IsSatisfy();
+            decisions[i].UpdateState();
+        }
+        for (int i = 0; i < decisions.Count; i++)
+        {
+            if (decisions[i].IsSatisfy() == false)
+                return;
         }
 
-        if (result)
-            owner.FSM.ChangeState(nextState);
+        character.FSM.ChangeState(nextState);
     }
 
     public override void ExitState()
     {
-        foreach (FSMDecision decision in decisions)
+        for (int i = 0; i < decisions.Count; i++)
         {
-            decision.ExitState();
+            decisions[i].ExitState();
         }
     }
 }

@@ -10,20 +10,21 @@ public class Character : Entity, IDamage
     private CharacterMovement movement;
     private CharacterHealth health;
     private CharacterFSM fsm;
+    private EntityAnimation anim;
 
     public CharacterMovement Movement => movement;
     public CharacterHealth Health => health;
     public CharacterFSM FSM => fsm;
-
-    [SerializeField] private PlayInputSO input;
+    public EntityAnimation Anim => anim;
 
     protected override void PostInitializeComponent()
     {
-        base.PostInitializeComponent();
-
         health = GetEntityComponent<CharacterHealth>();
         movement = GetEntityComponent<CharacterMovement>();
         fsm = GetEntityComponent<CharacterFSM>();
+        anim = GetEntityComponent<EntityAnimation>();
+
+        base.PostInitializeComponent();
 
         //test
         InputManager.ChangeInputMap(InputMapType.Play);

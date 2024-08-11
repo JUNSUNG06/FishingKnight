@@ -6,10 +6,9 @@ using UnityEngine;
 public class CharacterFSM : CharacterComponent
 {
     [SerializeField] private FSMState defaultState;
+    [SerializeField] private FSMState currentState;
 
     private List<FSMState> states;
-
-    private FSMState currentState;
 
     public override void Initialize(Entity owner)
     {
@@ -44,14 +43,8 @@ public class CharacterFSM : CharacterComponent
 
     public void ChangeState(FSMState nextState)
     {
-        currentState?.ExitState();
-        currentState = nextState;
-        currentState.EnterState();
-    }
-
-    public void ChangeState(Type type)
-    {
-        FSMState nextState = states.Find(x => x.GetType() == type);
+        if (currentState == nextState)
+            return;
 
         currentState?.ExitState();
         currentState = nextState;

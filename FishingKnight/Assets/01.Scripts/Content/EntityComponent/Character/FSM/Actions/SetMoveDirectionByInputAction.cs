@@ -23,11 +23,11 @@ public class SetMoveDirectionByInputAction : FSMAction
 
     private void SetMoveDir(CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed || context.canceled)
         {
             Vector2 input = context.ReadValue<Vector2>();
             Vector3 moveDir = new Vector3(input.x, 0, input.y);
-            owner.Movement.SetMoveDirection(moveDir);
+            character.Movement.SetMoveDirection(moveDir);
         }
     }
 }

@@ -32,40 +32,42 @@ public class FSMState : FSMObject
 
     public override void EnterState()
     {
-        foreach (FSMAction action in actions)
+        for(int i = 0; i < actions.Count; i++)
         {
-            action.EnterState();
+            actions[i].EnterState();
         }
 
-        foreach (FSMTransition transition in transitions)
+        for (int i = 0; i < transitions.Count; i++)
         {
-            transition.EnterState();
+            transitions[i].EnterState();
         }
     }
 
     public override void UpdateState()
     {
-        foreach (FSMAction action in actions)
+        for (int i = 0; i < actions.Count; i++)
         {
-            action.UpdateState();
+            actions[i].UpdateState();
         }
 
-        foreach (FSMTransition transition in transitions)
+
+        for (int i = 0; i < transitions.Count; i++)
         {
-            transition.UpdateState();
+            transitions[i].UpdateState();
         }
     }
 
     public override void ExitState()
     {
-        foreach (FSMAction action in actions)
+        for (int i = 0; i < actions.Count; i++)
         {
-            action.ExitState();
+            actions[i].ExitState();
         }
 
-        foreach (FSMTransition transition in transitions)
+
+        for (int i = 0; i < transitions.Count; i++)
         {
-            transition.ExitState();
+            transitions[i].ExitState();
         }
     }
 }
