@@ -8,6 +8,8 @@ public class FSMState : FSMObject
     private List<FSMAction> actions;
     private List<FSMTransition> transitions;
 
+    [SerializeField] private string animationName;
+
     public override void Initialize(Character owner)
     {
         base.Initialize(owner);
@@ -41,6 +43,8 @@ public class FSMState : FSMObject
         {
             transitions[i].EnterState();
         }
+
+        character.Anim.Animator.SetBool(animationName, true);
     }
 
     public override void UpdateState()
@@ -69,5 +73,7 @@ public class FSMState : FSMObject
         {
             transitions[i].ExitState();
         }
+
+        character.Anim.Animator.SetBool(animationName, false);
     }
 }

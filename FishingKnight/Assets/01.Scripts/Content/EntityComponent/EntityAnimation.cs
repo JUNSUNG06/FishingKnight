@@ -14,4 +14,9 @@ public class EntityAnimation : EntityComponent
         Animator = owner.transform.Find("Visual").GetComponent<Animator>();
         Event = owner.transform.Find("Visual").GetComponent<AnimationEvent>();
     }
+
+    public void SetRootMotion(bool value)
+    {
+        Animator.applyRootMotion = value;
+    }
 }

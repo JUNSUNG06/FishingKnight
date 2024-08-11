@@ -41,8 +41,15 @@ public class CharacterFSM : CharacterComponent
         currentState?.UpdateState();
     }
 
+    public void ChangeState(string name)
+    {
+        ChangeState(states.Find(s => s.name == $"{name}State"));
+    }
+
     public void ChangeState(FSMState nextState)
     {
+        if (nextState == null)
+            return;
         if (currentState == nextState)
             return;
 

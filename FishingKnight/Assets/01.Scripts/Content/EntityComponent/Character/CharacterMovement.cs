@@ -73,6 +73,12 @@ public class CharacterMovement : CharacterComponent
         rb.velocity = velocity;
     }
 
+    public void Stop()
+    {
+        SetMoveDirection(Vector3.zero);
+        SetMoveSpeed(0f, false);
+    }
+
     public void SetMoveDirection(Vector3 direction)
     {
         MoveDirection = direction.normalized;

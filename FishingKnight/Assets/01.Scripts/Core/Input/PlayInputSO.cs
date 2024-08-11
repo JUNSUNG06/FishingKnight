@@ -26,4 +26,9 @@ public class PlayInputSO : InputSO<PlayInputActionType>, IPlayActions
     {
         inputActions[PlayInputActionType.Run]?.Invoke(context);
     }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        inputActions[PlayInputActionType.Interact]?.Invoke(context);
+    }
 }

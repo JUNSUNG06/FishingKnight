@@ -439,6 +439,7 @@ Transform:
   - {fileID: 8613790307970827533}
   - {fileID: 4966639832280575964}
   - {fileID: 8339155999187220635}
+  - {fileID: 1126612082065788539}
   m_Father: {fileID: 5679357691156341072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815662922799366202
@@ -453,6 +454,7 @@ GameObject:
   - component: {fileID: 9178981082001377647}
   - component: {fileID: 4943933178662234888}
   - component: {fileID: 5094727651766468614}
+  - component: {fileID: 3715448782230653600}
   m_Layer: 0
   m_Name: WalkState
   m_TagString: Untagged
@@ -489,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a32ec7e247f714d855d6fa0ace3ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationName: locomotion
 --- !u!114 &4943933178662234888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +518,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedWeight: 0.5
+  turn: 1
+--- !u!114 &3715448782230653600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815662922799366202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf8a2766f6a0e845892c9db7bc8cdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
 --- !u!1 &2012238480215039426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,6 +1684,7 @@ GameObject:
   - component: {fileID: 1367563178426932054}
   - component: {fileID: 3748965316277251564}
   - component: {fileID: 6426786556704876553}
+  - component: {fileID: 8767615634855248852}
   m_Layer: 0
   m_Name: RunState
   m_TagString: Untagged
@@ -1703,6 +1721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a32ec7e247f714d855d6fa0ace3ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationName: locomotion
 --- !u!114 &3748965316277251564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,6 +1748,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedWeight: 1
+  turn: 1
+--- !u!114 &8767615634855248852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692804307714586120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf8a2766f6a0e845892c9db7bc8cdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
 --- !u!1 &4707732701782305978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,6 +2033,7 @@ GameObject:
   - component: {fileID: 5718343256096177925}
   - component: {fileID: 199057174413008123}
   - component: {fileID: 2169951086018779310}
+  - component: {fileID: 3877624453771220508}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2041,6 +2075,7 @@ MonoBehaviour:
   - {fileID: 7901468581337286629}
   - {fileID: 199057174413008123}
   - {fileID: 2169951086018779310}
+  - {fileID: 3877624453771220508}
 --- !u!114 &4864836923886887465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2071,6 +2106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 6
   acceleation: 15
+  turnSpeed: 10
 --- !u!54 &621265997693904646
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2147,6 +2183,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff947107ea39b74bad5b40abae69c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3877624453771220508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451601380786409321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6f35fd1c69712468db22dd2fbcc7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 1, z: 1}
+  distance: 1
+  halfExtents: {x: 0.5, y: 1, z: 0.5}
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &5604831333080360259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,6 +2616,91 @@ Transform:
   - {fileID: 365795471540330353}
   m_Father: {fileID: 8301541660701889991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6778354278438194469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126612082065788539}
+  - component: {fileID: 7284667185112930390}
+  - component: {fileID: 1737563560292538292}
+  - component: {fileID: 497652448056190880}
+  - component: {fileID: 4257420922356358884}
+  m_Layer: 0
+  m_Name: SitState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1126612082065788539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778354278438194469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1683232825116625858}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7284667185112930390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778354278438194469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a32ec7e247f714d855d6fa0ace3ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationName: sit
+--- !u!114 &1737563560292538292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778354278438194469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace26e5b653c501459c5e192abbd41e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &497652448056190880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778354278438194469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a42bbe6c719524b940a542d29542d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4257420922356358884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778354278438194469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee3ad1088160534e94935ead20547ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
 --- !u!1 &6807723812599575200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,6 +2905,7 @@ GameObject:
   - component: {fileID: 4235631998085466882}
   - component: {fileID: 4621771282837148890}
   - component: {fileID: 3729667006684497055}
+  - component: {fileID: 3991327799215236587}
   m_Layer: 0
   m_Name: IdleState
   m_TagString: Untagged
@@ -2801,6 +2941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a32ec7e247f714d855d6fa0ace3ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationName: locomotion
 --- !u!114 &4621771282837148890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2827,6 +2968,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedWeight: 0
+  turn: 1
+--- !u!114 &3991327799215236587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331575144316926279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf8a2766f6a0e845892c9db7bc8cdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
 --- !u!1 &8584711426158632528
 GameObject:
   m_ObjectHideFlags: 0

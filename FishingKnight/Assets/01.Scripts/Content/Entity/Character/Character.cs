@@ -11,11 +11,15 @@ public class Character : Entity, IDamage
     private CharacterHealth health;
     private CharacterFSM fsm;
     private EntityAnimation anim;
+    private CharacterInteract interact;
+    private Collider col;
 
     public CharacterMovement Movement => movement;
     public CharacterHealth Health => health;
     public CharacterFSM FSM => fsm;
     public EntityAnimation Anim => anim;
+    public CharacterInteract Interact => interact;
+    public Collider Collider => col;
 
     protected override void PostInitializeComponent()
     {
@@ -23,6 +27,8 @@ public class Character : Entity, IDamage
         movement = GetEntityComponent<CharacterMovement>();
         fsm = GetEntityComponent<CharacterFSM>();
         anim = GetEntityComponent<EntityAnimation>();
+        interact = GetEntityComponent<CharacterInteract>();
+        col = GetComponent<Collider>();
 
         base.PostInitializeComponent();
 
