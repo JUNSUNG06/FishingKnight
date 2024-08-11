@@ -12,7 +12,7 @@ public class Chair : Stuff
 
         if(performer.TryGetComponent<Character>(out Character character))
         {
-            character.FSM.ChangeState("Sit");
+            character.FSM.SetNextState("Sit");
             character.transform.SetPositionAndRotation(sitPoint.position, sitPoint.rotation);
         }
     }

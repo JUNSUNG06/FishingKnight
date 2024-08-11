@@ -7,6 +7,10 @@ public class CharacterFSM : CharacterComponent
 {
     [SerializeField] private FSMState defaultState;
     [SerializeField] private FSMState currentState;
+    [SerializeField] private FSMState nextState;
+
+    public FSMState CurretState => currentState;
+    public FSMState NextState => nextState;
 
     private List<FSMState> states;
 
@@ -31,28 +35,37 @@ public class CharacterFSM : CharacterComponent
             state.Initialize(Character);
         }
 
-        ChangeState(defaultState);
+        SetNextState(defaultState);
+        ChangeState();
     }
 
     public override void UpdateComponent()
     {
         base.UpdateComponent();
 
+        if (currentState != nextState)
+            ChangeState();
+       
         currentState?.UpdateState();
     }
 
-    public void ChangeState(string name)
+    public void SetNextState(string name)
     {
-        ChangeState(states.Find(s => s.name == $"{name}State"));
+        SetNextState(states.Find(s => s.name == $"{name}State"));
     }
 
-    public void ChangeState(FSMState nextState)
+    public void SetNextState(FSMState nextState)
     {
         if (nextState == null)
             return;
         if (currentState == nextState)
             return;
 
+        this.nextState = nextState;
+    }
+
+    private void ChangeState()
+    {
         currentState?.ExitState();
         currentState = nextState;
         currentState.EnterState();

@@ -8,7 +8,8 @@ public class FSMState : FSMObject
     private List<FSMAction> actions;
     private List<FSMTransition> transitions;
 
-    [SerializeField] private string animationName;
+    [SerializeField] private List<string> playAnimations;
+    public List<string> PlayAnimations => playAnimations;
 
     public override void Initialize(Character owner)
     {
@@ -44,7 +45,10 @@ public class FSMState : FSMObject
             transitions[i].EnterState();
         }
 
-        character.Anim.Animator.SetBool(animationName, true);
+        for(int i = 0; i <  playAnimations.Count; i++)
+        {
+            character.Anim.Animator.SetBool(playAnimations[i], true);
+        }
     }
 
     public override void UpdateState()
@@ -74,6 +78,14 @@ public class FSMState : FSMObject
             transitions[i].ExitState();
         }
 
-        character.Anim.Animator.SetBool(animationName, false);
+        string animName;
+        for (int i = 0; i < playAnimations.Count; i++)
+        {
+            animName = playAnimations[i];
+            if (character.FSM.NextState.PlayAnimations.Contains(animName) == false)
+            {
+                character.Anim.Animator.SetBool(animName, false);
+            }
+        }
     }
 }

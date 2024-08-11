@@ -40,7 +40,7 @@ public class FSMTransition : FSMObject
                 return;
         }
 
-        character.FSM.ChangeState(nextState);
+        character.FSM.SetNextState(nextState);
     }
 
     public override void ExitState()
