@@ -26,9 +26,9 @@ public class CharacterFSM : CharacterComponent
         }
     }
 
-    public override void PostInitializeComponent()
+    public override void PostInitialize()
     {
-        base.PostInitializeComponent();
+        base.PostInitialize();
 
         foreach(var state in states)
         {

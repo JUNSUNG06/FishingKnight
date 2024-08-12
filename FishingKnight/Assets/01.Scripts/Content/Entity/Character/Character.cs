@@ -21,7 +21,7 @@ public class Character : Entity, IDamage
     public CharacterInteract Interact => interact;
     public Collider Collider => col;
 
-    protected override void PostInitializeComponent()
+    protected override void PostInitialize()
     {
         health = GetEntityComponent<CharacterHealth>();
         movement = GetEntityComponent<CharacterMovement>();
@@ -30,7 +30,7 @@ public class Character : Entity, IDamage
         interact = GetEntityComponent<CharacterInteract>();
         col = GetComponent<Collider>();
 
-        base.PostInitializeComponent();
+        base.PostInitialize();
 
         //test
         InputManager.ChangeInputMap(InputMapType.Play);

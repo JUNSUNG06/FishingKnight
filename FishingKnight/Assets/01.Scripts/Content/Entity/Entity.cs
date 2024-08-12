@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour
     private void Start()
     {
         Initialize();
-        PostInitializeComponent();
+        PostInitialize();
     }
 
     private void Update()
@@ -29,11 +29,11 @@ public class Entity : MonoBehaviour
         }
     }
 
-    protected virtual void PostInitializeComponent()
+    protected virtual void PostInitialize()
     {
         foreach (EntityComponent comp in comps)
         {
-            comp.PostInitializeComponent();
+            comp.PostInitialize();
         }
     }
 

@@ -12,7 +12,7 @@ public class EntityComponent : MonoBehaviour
         entity = owner;
     }
 
-    public virtual void PostInitializeComponent() { }
+    public virtual void PostInitialize() { }
 
     public virtual void UpdateComponent() { }
 }
