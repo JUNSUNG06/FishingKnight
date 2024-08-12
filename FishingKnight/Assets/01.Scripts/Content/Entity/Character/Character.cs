@@ -21,16 +21,16 @@ public class Character : Entity, IDamage
     public CharacterInteract Interact => interact;
     public Collider Collider => col;
 
-    protected override void PostInitialize()
+    protected override void Awake()
     {
+        base.Awake();
+        
         health = GetEntityComponent<CharacterHealth>();
         movement = GetEntityComponent<CharacterMovement>();
         fsm = GetEntityComponent<CharacterFSM>();
         anim = GetEntityComponent<EntityAnimation>();
         interact = GetEntityComponent<CharacterInteract>();
         col = GetComponent<Collider>();
-
-        base.PostInitialize();
 
         //test
         InputManager.ChangeInputMap(InputMapType.Play);

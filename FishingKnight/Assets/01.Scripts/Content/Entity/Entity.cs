@@ -5,12 +5,24 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [SerializeField] private List<EntityComponent> comps;
+    private List<EntityComponent> comps;
 
-    private void Start()
+    protected virtual void Awake()
     {
-        Initialize();
-        PostInitialize();
+        comps = new List<EntityComponent>();
+        GetComponents<EntityComponent>(comps);
+        foreach (EntityComponent comp in comps)
+        {
+            comp.Initialize(this);
+        }
+    }
+
+    protected virtual void Start()
+    {
+        foreach (EntityComponent comp in comps)
+        {
+            comp.PostInitialize();
+        }
     }
 
     private void Update()
@@ -20,37 +32,21 @@ public class Entity : MonoBehaviour
             comps[i].UpdateComponent();
         }
     }
-
-    protected virtual void Initialize()
-    {
-        foreach (EntityComponent comp in comps)
-        {
-            comp.Initialize(this);
-        }
-    }
-
-    protected virtual void PostInitialize()
-    {
-        foreach (EntityComponent comp in comps)
-        {
-            comp.PostInitialize();
-        }
-    }
-
+    
     public T GetEntityComponent<T>() where T : EntityComponent
     {
-        T result = null;
+        //T result = null;
 
-        for (int i = 0; i < comps.Count; i++)
-        {
-            if (comps[i] is T)
-            {
-                result = comps[i] as T;
+        //for (int i = 0; i < comps.Count; i++)
+        //{
+        //    if (comps[i] is T)
+        //    {
+        //        result = comps[i] as T;
 
-                break;
-            }
-        }
+        //        break;
+        //    }
+        //}
 
-        return result;
+        return GetComponent<T>();
     }
 }
