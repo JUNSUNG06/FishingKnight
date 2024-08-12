@@ -31,4 +31,9 @@ public class PlayInputSO : InputSO<PlayInputActionType>, IPlayActions
     {
         inputActions[PlayInputActionType.Interact]?.Invoke(context);
     }
+
+    public void OnCancel(InputAction.CallbackContext context)
+    {
+        inputActions[PlayInputActionType.Cancel]?.Invoke(context);
+    }
 }

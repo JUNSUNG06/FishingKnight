@@ -77,6 +77,7 @@ public class CharacterMovement : CharacterComponent
     {
         SetMoveDirection(Vector3.zero);
         SetMoveSpeed(0f, false);
+        rb.velocity = Vector3.zero;
     }
 
     public void SetMoveDirection(Vector3 direction)
@@ -160,5 +161,10 @@ public class CharacterMovement : CharacterComponent
         transform.rotation = end;
 
         turnCo = null;
+    }
+
+    public void EnableGravity(bool value)
+    {
+        rb.useGravity = value;
     }
 }

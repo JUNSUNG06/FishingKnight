@@ -25,4 +25,11 @@ public class AnimationEvent : MonoBehaviour
     {
         events[type] -= action;
     }
+
+    public void InvokeEvent(string eventName)
+    {
+        AnimationEventType type = (AnimationEventType)Enum.Parse(typeof(AnimationEventType), eventName);
+
+        events[type]?.Invoke();
+    }
 }

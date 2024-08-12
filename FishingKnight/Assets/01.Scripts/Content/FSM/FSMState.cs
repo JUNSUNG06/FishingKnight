@@ -9,6 +9,9 @@ public class FSMState : FSMObject
     private List<FSMTransition> transitions;
 
     [SerializeField] private List<string> playAnimations;
+    [SerializeField] private bool applyRootMotion;
+    [SerializeField] private bool resetRootMotion;
+    [SerializeField] private bool alignToRootMotion;
     public List<string> PlayAnimations => playAnimations;
 
     public override void Initialize(Character owner)
@@ -45,6 +48,12 @@ public class FSMState : FSMObject
             transitions[i].EnterState();
         }
 
+        if (resetRootMotion)
+            character.Anim.ResetRootMotion();
+        else if(alignToRootMotion)
+            character.Anim.AlignToRootMotion();
+
+        character.Anim.Animator.applyRootMotion = applyRootMotion;
         for(int i = 0; i <  playAnimations.Count; i++)
         {
             character.Anim.Animator.SetBool(playAnimations[i], true);
