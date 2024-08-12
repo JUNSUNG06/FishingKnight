@@ -7,12 +7,16 @@ public class CharacterFSM : CharacterComponent
 {
     [SerializeField] private FSMState defaultState;
     [SerializeField] private FSMState currentState;
-    [SerializeField] private FSMState nextState;
+    private FSMState nextState;
+    private FSMState prevState;
 
     public FSMState CurretState => currentState;
     public FSMState NextState => nextState;
+    public FSMState PrevState => prevState;
 
     private List<FSMState> states;
+
+    public bool CanTransition;
 
     public override void Initialize(Entity owner)
     {
@@ -34,6 +38,8 @@ public class CharacterFSM : CharacterComponent
         {
             state.Initialize(Character);
         }
+
+        CanTransition = true;
 
         SetNextState(defaultState);
         ChangeState();
@@ -60,6 +66,8 @@ public class CharacterFSM : CharacterComponent
             return;
         if (currentState == nextState)
             return;
+        if (CanTransition == false)
+            return;
 
         this.nextState = nextState;
     }
@@ -67,6 +75,7 @@ public class CharacterFSM : CharacterComponent
     private void ChangeState()
     {
         currentState?.ExitState();
+        prevState = currentState;
         currentState = nextState;
         currentState.EnterState();
     }

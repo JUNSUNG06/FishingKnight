@@ -5,6 +5,7 @@ using UnityEngine;
 public class Chair : Stuff
 {
     [SerializeField] private Transform sitPoint;
+    [SerializeField] private string sitStateaName;
 
     public override void Interact(Entity performer)
     {
@@ -12,7 +13,7 @@ public class Chair : Stuff
 
         if(performer.TryGetComponent<Character>(out Character character))
         {
-            character.FSM.SetNextState("Sit");
+            character.FSM.SetNextState(sitStateaName);
             character.transform.SetPositionAndRotation(sitPoint.position, sitPoint.rotation);
         }
     }

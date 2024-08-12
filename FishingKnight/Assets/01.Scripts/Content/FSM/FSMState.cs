@@ -52,11 +52,12 @@ public class FSMState : FSMObject
             character.Anim.ResetRootMotion();
         else if(alignToRootMotion)
             character.Anim.AlignToRootMotion();
-
         character.Anim.Animator.applyRootMotion = applyRootMotion;
+
         for(int i = 0; i <  playAnimations.Count; i++)
         {
-            character.Anim.Animator.SetBool(playAnimations[i], true);
+            if (character.FSM.PrevState != null && !character.FSM.PrevState.PlayAnimations.Contains(playAnimations[i]))
+                character.Anim.Animator.SetTrigger(playAnimations[i]);
         }
     }
 
@@ -85,16 +86,6 @@ public class FSMState : FSMObject
         for (int i = 0; i < transitions.Count; i++)
         {
             transitions[i].ExitState();
-        }
-
-        string animName;
-        for (int i = 0; i < playAnimations.Count; i++)
-        {
-            animName = playAnimations[i];
-            if (character.FSM.NextState.PlayAnimations.Contains(animName) == false)
-            {
-                character.Anim.Animator.SetBool(animName, false);
-            }
         }
     }
 }

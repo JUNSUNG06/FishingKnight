@@ -27,7 +27,10 @@ public class InputDecision : FSMDecision
 
     public override void Satisfy()
     {
-        result = started || canceled;
+        result = (onStarted && started) || (onCanceled && canceled);
+
+        started = false;
+        canceled = false;
     }
 
     public override void ExitState()
@@ -40,8 +43,12 @@ public class InputDecision : FSMDecision
     private void CheckInput(CallbackContext context)
     {
         if (context.started && onStarted)
+        {
             started = true;
+        }
         else if (context.canceled && onCanceled)
+        {
             canceled = true;
+        }
     }
 }
