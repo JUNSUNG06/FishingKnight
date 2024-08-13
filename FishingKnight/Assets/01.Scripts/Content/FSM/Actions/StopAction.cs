@@ -9,5 +9,6 @@ public class StopAction : FSMAction
         base.EnterState();
 
         character.Movement.Stop();
+        character.Anim.Animator.SetFloat("move_speed", 0f);
     }
 }

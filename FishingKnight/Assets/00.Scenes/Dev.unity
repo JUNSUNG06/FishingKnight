@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sitPoint: {fileID: 208855195}
-  sitStateaName: Sit
+  sitStateaName: 
 --- !u!65 &1754365917
 BoxCollider:
   m_ObjectHideFlags: 0
