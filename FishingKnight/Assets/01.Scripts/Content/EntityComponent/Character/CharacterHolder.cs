@@ -19,9 +19,9 @@ public class CharacterHolder : CharacterComponent
     [SerializeField] private Socket handSocket;
     private Dictionary<SocketType, List<SocketHoldPair>> socketHoldPairDictionary;
 
-    private IHold equipmentObject;
+    private IEquipment equipmentObject;
 
-    [SerializeField] Equipment test;
+    public Equipment test;
 
     public override void Initialize(Entity owner)
     {
@@ -37,6 +37,15 @@ public class CharacterHolder : CharacterComponent
         }
 
         Hold(test);
+        Equipment(test);
+    }
+
+    public override void UpdateComponent()
+    {
+        base.UpdateComponent();
+
+        if (Input.GetKeyDown(KeyCode.E))
+            Unequipment();
     }
 
     public void Hold(IHold holdObject)
@@ -50,8 +59,9 @@ public class CharacterHolder : CharacterComponent
 
         socketHoldPair.HoldObject = holdObject;
         socketHoldPair.Socket.Use();
-        holdObject.Hold(socketHoldPair.Socket);
+        holdObject.Hold(socketHoldPair.Socket, this);
     }
+
     public void Unhold(IHold holdObject)
     {
         if (IsHoldingObject(holdObject) == false)
@@ -66,15 +76,13 @@ public class CharacterHolder : CharacterComponent
         holdObject.Unhold();
     }
 
-    public void Equipment(IHold equipmentObject)
+    public void Equipment(IEquipment equipmentObject)
     {
-        if (IsHoldingObject(equipmentObject) == false)
-            return;
-
-        if (this.equipmentObject != null)
+        if (equipmentObject == null)
             return;
 
         this.equipmentObject = equipmentObject;
+        equipmentObject.Equipment(handSocket, this);
         handSocket.Use();
     }
 
@@ -83,6 +91,7 @@ public class CharacterHolder : CharacterComponent
         if (equipmentObject == null)
             return;
 
+        equipmentObject.Unequipment();
         equipmentObject = null;
         handSocket.Unuse();
     }
@@ -93,5 +102,13 @@ public class CharacterHolder : CharacterComponent
             return false;
 
         return socketHoldPairDictionary[holdObject.SocketType].Find(x => x.HoldObject == holdObject) != null;
+    }
+
+    public Socket GetHoldingObjectSocket(IHold holdObject)
+    {
+        if (socketHoldPairDictionary.ContainsKey(holdObject.SocketType) == false)
+            return null;
+
+        return socketHoldPairDictionary[holdObject.SocketType].Find(x => x.HoldObject == holdObject).Socket;
     }
 }
