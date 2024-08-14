@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipment : Stuff, IHold, IEquipment
+public class Equipment : Item, IHold, IEquipment
 {
     [SerializeField] private Transform holdAnchor;
     [SerializeField] private Transform equipAnchor;
@@ -12,7 +12,7 @@ public class Equipment : Stuff, IHold, IEquipment
     public GameObject Body { get { return gameObject; } set { return; } }
 
     [SerializeField] private EquipmentType equipmentType;
-    public EquipmentType Type { get { return equipmentType; } set { return; } }
+    public EquipmentType EquipmentType { get { return equipmentType; } set { return; } }
 
     private CharacterHolder holder;
 

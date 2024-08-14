@@ -23,7 +23,7 @@ public class EquipmentAction : FSMAction
         {
             if (h.Body.TryGetComponent<IEquipment>(out IEquipment equip))
             {
-                if (equip.Type == equipType)
+                if (equip.EquipmentType == equipType)
                     return true;
             }
             return false;
