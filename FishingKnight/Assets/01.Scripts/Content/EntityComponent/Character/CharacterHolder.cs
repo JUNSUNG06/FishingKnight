@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,15 +38,6 @@ public class CharacterHolder : CharacterComponent
         }
 
         Hold(test);
-        Equipment(test);
-    }
-
-    public override void UpdateComponent()
-    {
-        base.UpdateComponent();
-
-        if (Input.GetKeyDown(KeyCode.E))
-            Unequipment();
     }
 
     public void Hold(IHold holdObject)
@@ -102,6 +94,24 @@ public class CharacterHolder : CharacterComponent
             return false;
 
         return socketHoldPairDictionary[holdObject.SocketType].Find(x => x.HoldObject == holdObject) != null;
+    }
+
+    public bool TryGetHoldingObject(Func<IHold, bool> condition, out IHold holdingObject)
+    {
+        foreach(var list in socketHoldPairDictionary.Values)
+        {
+            foreach(var pair in list)
+            {
+                if(condition?.Invoke(pair.HoldObject) == true)
+                {
+                    holdingObject = pair.HoldObject;
+                    return true;
+                }
+            }
+        }
+
+        holdingObject = null;
+        return false;
     }
 
     public Socket GetHoldingObjectSocket(IHold holdObject)

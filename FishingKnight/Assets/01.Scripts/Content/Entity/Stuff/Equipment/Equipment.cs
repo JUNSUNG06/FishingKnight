@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipment : MonoBehaviour, IHold, IEquipment
+public class Equipment : Stuff, IHold, IEquipment
 {
     [SerializeField] private Transform holdAnchor;
     [SerializeField] private Transform equipAnchor;
@@ -10,6 +10,9 @@ public class Equipment : MonoBehaviour, IHold, IEquipment
     [SerializeField] private SocketType socketType;
     SocketType IHold.SocketType { get => socketType; set => socketType = value; }
     public GameObject Body { get { return gameObject; } set { return; } }
+
+    [SerializeField] private EquipmentType equipmentType;
+    public EquipmentType Type { get { return equipmentType; } set { return; } }
 
     private CharacterHolder holder;
 

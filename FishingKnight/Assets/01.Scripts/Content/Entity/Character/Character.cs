@@ -12,6 +12,7 @@ public class Character : Entity, IDamage
     private CharacterFSM fsm;
     private EntityAnimation anim;
     private CharacterInteract interact;
+    private CharacterHolder holder;
     private Collider col;
 
     public CharacterMovement Movement => movement;
@@ -19,6 +20,7 @@ public class Character : Entity, IDamage
     public CharacterFSM FSM => fsm;
     public EntityAnimation Anim => anim;
     public CharacterInteract Interact => interact;
+    public CharacterHolder Holder => holder;
     public Collider Collider => col;
 
     protected override void Awake()
@@ -30,6 +32,7 @@ public class Character : Entity, IDamage
         fsm = GetEntityComponent<CharacterFSM>();
         anim = GetEntityComponent<EntityAnimation>();
         interact = GetEntityComponent<CharacterInteract>();
+        holder = GetEntityComponent<CharacterHolder>();
         col = GetComponent<Collider>();
 
         //test

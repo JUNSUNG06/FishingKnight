@@ -1793,6 +1793,7 @@ GameObject:
   - component: {fileID: 1634302775526246388}
   - component: {fileID: 174331276148256470}
   - component: {fileID: 8719659041350846915}
+  - component: {fileID: 7494969996607492807}
   m_Layer: 0
   m_Name: FishingStartState
   m_TagString: Untagged
@@ -1845,6 +1846,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ef24152be8e314ab2458d2b655f6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7494969996607492807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3900759419360443640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace71f2d67eb262429f26357d61996bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionType: 0
+  equipType: 0
 --- !u!1 &3946532845070214393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,6 +2568,7 @@ GameObject:
   - component: {fileID: 670314291759399267}
   - component: {fileID: 3878220819421365204}
   - component: {fileID: 1759041096934689224}
+  - component: {fileID: 4914202896612743593}
   m_Layer: 0
   m_Name: StandUpState
   m_TagString: Untagged
@@ -2618,6 +2634,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aefcbc70573d974dbd10b39db58fee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4914202896612743593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435442856318321746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace71f2d67eb262429f26357d61996bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionType: 1
+  equipType: 0
 --- !u!1 &5445534666677468246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,6 +2875,7 @@ MonoBehaviour:
   holdSockets:
   - {fileID: 6351745817050285583}
   handSocket: {fileID: 3414976847052083431}
+  test: {fileID: 0}
 --- !u!1 &5604831333080360259
 GameObject:
   m_ObjectHideFlags: 0
