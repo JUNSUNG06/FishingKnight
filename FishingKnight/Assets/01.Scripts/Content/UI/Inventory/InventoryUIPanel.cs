@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class InventoryUIPanel : UIPanel
+public class InventoryUIPanel : UIPanel, IPointerClickHandler
 {
     private CharacterInventory inventory;
     private ItemType currentItemType;
@@ -13,6 +14,9 @@ public class InventoryUIPanel : UIPanel
     [Space]
     [SerializeField] private Transform slotParent;
     [SerializeField] private InventoryItemSlot slotPrefab;
+
+    [Space]
+    [SerializeField] private ItemDescriptor itemDescriptor;
 
     public void SetInventory(CharacterInventory inventory)
     {
@@ -25,6 +29,8 @@ public class InventoryUIPanel : UIPanel
 
         currentItemType = ItemType.Equipment;
         DrawInventory();
+
+        itemDescriptor.Hide();
     }
 
     public void DrawNextItems()
@@ -56,9 +62,20 @@ public class InventoryUIPanel : UIPanel
         for(int i = 0; i < items.Count; i++)
         {
             InventoryItemSlot slot = Instantiate(slotPrefab, slotParent);
+            slot.Initialize();
             slot.SetInventoryItem(items[i]);
         }
 
         menuText.text = currentItemType.ToString();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GameObject target = eventData.pointerCurrentRaycast.gameObject;
+        if (target.TryGetComponent<InventoryItemSlot>(out InventoryItemSlot slot))
+        {
+            itemDescriptor.SetItem(slot.Item);
+            itemDescriptor.Show();
+        }
     }
 }
