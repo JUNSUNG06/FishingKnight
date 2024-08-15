@@ -130,8 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76cad53d5e506544a2db8738434ff1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7696537001001884688}
-  itemtype: 0
+  info: {fileID: 11400000, guid: 2c0b3e2d000769d479006ca2f4a0e348, type: 2}
   holdAnchor: {fileID: 3048326774876346555}
   equipAnchor: {fileID: 730216613180179739}
   socketType: 1

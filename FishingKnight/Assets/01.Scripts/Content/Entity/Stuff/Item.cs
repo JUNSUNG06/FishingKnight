@@ -6,11 +6,8 @@ public class Item : Stuff
 {
     protected Entity owner;
 
-    [SerializeField] private Item prefab;
-    public Item Prefab => prefab;
-
-    [SerializeField] private ItemType itemtype;
-    public ItemType Itemtype => itemtype;
+    [SerializeField] private ItemSO info;
+    public ItemSO Info => info;
 
     public void SetOwner(Entity owner)
     {

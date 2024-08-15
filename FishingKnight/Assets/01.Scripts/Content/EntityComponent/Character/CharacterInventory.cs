@@ -24,13 +24,13 @@ public class CharacterInventory : CharacterComponent
 
         InventoryItem inventoryItem = new InventoryItem(item);
 
-        itemDictionary[inventoryItem.Itemtype].Add(inventoryItem);
+        itemDictionary[inventoryItem.Info.ItemType].Add(inventoryItem);
         Destroy(item.gameObject);
     }
 
     public Item PopItem(InventoryItem inventoryItem)
     {
-        Item item = Instantiate(inventoryItem.Prefab);
+        Item item = Instantiate(inventoryItem.Info.Prefab);
 
         RemoveItem(item);
 
@@ -42,10 +42,10 @@ public class CharacterInventory : CharacterComponent
         if (item == null)
             return;
 
-        InventoryItem inventoryItem = itemDictionary[item.Itemtype].Find(x => x.Equals(item));
+        InventoryItem inventoryItem = itemDictionary[item.Info.ItemType].Find(x => x.Equals(item));
         if (inventoryItem == null)
             return;
 
-        itemDictionary[item.Itemtype].Remove(inventoryItem);
+        itemDictionary[item.Info.ItemType].Remove(inventoryItem);
     }
 }
