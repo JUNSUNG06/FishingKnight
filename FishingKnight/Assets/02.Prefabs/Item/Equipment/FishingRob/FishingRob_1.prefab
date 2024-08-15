@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3048326774876346555}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HoldAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,8 @@ GameObject:
   - component: {fileID: 8992797911502201916}
   - component: {fileID: 3758247701499233049}
   - component: {fileID: 7696537001001884688}
-  m_Layer: 0
+  - component: {fileID: 5891653376825380815}
+  m_Layer: 11
   m_Name: FishingRob_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,10 +130,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76cad53d5e506544a2db8738434ff1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 7696537001001884688}
+  itemtype: 0
   holdAnchor: {fileID: 3048326774876346555}
   equipAnchor: {fileID: 730216613180179739}
   socketType: 1
   equipmentType: 0
+--- !u!65 &5891653376825380815
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5612698003660509432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.14814825, y: 0.2284808, z: 1.9006635}
+  m_Center: {x: -0.042176973, y: 0.04089815, z: 0.8819937}
 --- !u!1 &6230913616179298628
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 730216613180179739}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EquipAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

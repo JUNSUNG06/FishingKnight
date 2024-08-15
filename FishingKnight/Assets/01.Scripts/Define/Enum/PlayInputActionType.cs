@@ -4,4 +4,5 @@ public enum PlayInputActionType
     Run,
     Interact,
     Cancel,
+    OpenInventory,
 }

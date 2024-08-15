@@ -36,4 +36,9 @@ public class PlayInputSO : InputSO<PlayInputActionType>, IPlayActions
     {
         inputActions[PlayInputActionType.Cancel]?.Invoke(context);
     }
+
+    public void OnOpenInventory(InputAction.CallbackContext context)
+    {
+        inputActions[PlayInputActionType.OpenInventory]?.Invoke(context);
+    }
 }

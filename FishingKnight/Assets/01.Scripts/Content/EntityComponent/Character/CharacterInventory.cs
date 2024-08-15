@@ -25,6 +25,7 @@ public class CharacterInventory : CharacterComponent
         InventoryItem inventoryItem = new InventoryItem(item);
 
         itemDictionary[inventoryItem.Itemtype].Add(inventoryItem);
+        Destroy(item.gameObject);
     }
 
     public Item PopItem(InventoryItem inventoryItem)

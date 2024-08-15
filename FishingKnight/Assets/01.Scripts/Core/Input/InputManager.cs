@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ namespace OMG.Inputs
     {
         public static Controls controls { get; private set; }
         private static Dictionary<InputMapType, InputActionMap> inputMapDic;
+        private static Dictionary<InputMapType, ScriptableObject> inputSODic;
         private static InputMapType currentInputMapType;
         public static InputMapType CurrentInputMapType => currentInputMapType;
         private static InputMapType prevInputMapType;
@@ -18,13 +20,21 @@ namespace OMG.Inputs
         static InputManager()
         {
             controls = new Controls();
+
             inputMapDic = new Dictionary<InputMapType, InputActionMap>();
+            inputSODic = new Dictionary<InputMapType, ScriptableObject>();
         }
 
-        public static void RegistInputMap<T>(InputSO<T> inputSO, InputActionMap actionMap)
+        public static void RegistInputMap<T>(InputSO<T> inputSO, InputActionMap actionMap) where T : Enum
         {
             inputMapDic[inputSO.inputMapType] = actionMap;
+            inputSODic[inputSO.inputMapType] = inputSO;
             actionMap.Disable();
+        }
+
+        public static InputSO<T> GetInputSO<T>(InputMapType type) where T : Enum
+        {
+            return inputSODic[type] as InputSO<T>;
         }
 
         public static void ChangeInputMap(InputMapType inputMapType)

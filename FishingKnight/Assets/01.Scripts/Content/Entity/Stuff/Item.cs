@@ -16,4 +16,15 @@ public class Item : Stuff
     {
         this.owner = owner;
     }
+
+    public override void Interact(Entity performer)
+    {
+        base.Interact(performer);
+
+        if(performer.TryGetComponent<CharacterInventory>(out CharacterInventory inventory))
+        {
+            Debug.Log(performer.name);
+            inventory.AddItem(this);
+        }
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
-public class InputSO<T> : ScriptableObject
+public class InputSO<T> : ScriptableObject where T : Enum
 {
     public InputMapType inputMapType;
     protected Dictionary<T, Action<CallbackContext>> inputActions;

@@ -22,8 +22,6 @@ public class CharacterHolder : CharacterComponent
 
     private IEquipment equipmentObject;
 
-    public Equipment test;
-
     public override void Initialize(Entity owner)
     {
         base.Initialize(owner);
@@ -36,8 +34,6 @@ public class CharacterHolder : CharacterComponent
 
             socketHoldPairDictionary[socket.Type].Add(new SocketHoldPair(socket, null));
         }
-
-        Hold(test);
     }
 
     public void Hold(IHold holdObject)
