@@ -18,6 +18,8 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
     [Space]
     [SerializeField] private ItemDescriptor itemDescriptor;
 
+    private InventoryActionType[] actions;
+
     public void SetInventory(CharacterInventory inventory)
     {
         this.inventory = inventory;
@@ -69,13 +71,83 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
         menuText.text = currentItemType.ToString();
     }
 
+    public void SetInventoryAction(params InventoryActionType[] actions)
+    {
+        this.actions = actions;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         GameObject target = eventData.pointerCurrentRaycast.gameObject;
         if (target.TryGetComponent<InventoryItemSlot>(out InventoryItemSlot slot))
         {
             itemDescriptor.SetItem(slot.Item);
+            foreach(InventoryActionType action in actions)
+            {
+                CreateActionButton(action, slot);
+            }
             itemDescriptor.Show();
         }
+    }
+
+    private void CreateActionButton(InventoryActionType type, InventoryItemSlot itemSlot)
+    {
+        if (itemSlot == null)
+            return;
+
+        string text = "";
+        Action action = null;
+
+        switch (type)
+        {
+            case InventoryActionType.Equipment:
+                {
+                    text = "Hold";
+                    action = () =>
+                    {
+                        CharacterHolder holder = inventory.Character.GetEntityComponent<CharacterHolder>();
+                        if (holder == null)
+                            return;
+
+                        Item item = inventory.PopItem(itemSlot.Item);
+                        if (item == null)
+                            return;
+
+                        IHold holdableObject = item.GetComponent<IHold>();
+                        if (holdableObject == null)
+                            return;
+
+                        holder.Hold(holdableObject);
+
+                        DrawInventory();
+
+                        itemDescriptor.Hide();
+                    };
+                }
+                break;
+            case InventoryActionType.Remove:
+                {
+                    text = "Remove";
+                    action = () =>
+                    {
+                        inventory.RemoveItem(itemSlot.Item);
+
+                        DrawInventory();
+
+                        itemDescriptor.Hide();
+                    };
+                }
+                break;
+            case InventoryActionType.Sell:
+                {
+                    //
+                }
+                break;
+        }
+
+        if (text == "" || action == null)
+            return;
+
+        itemDescriptor.CreateActionButton(text, action);
     }
 }

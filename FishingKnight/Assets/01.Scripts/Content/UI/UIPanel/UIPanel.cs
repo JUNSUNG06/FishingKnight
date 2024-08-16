@@ -8,6 +8,6 @@ public class UIPanel : UIObject
     {
         base.Show();
 
-        Manager.UI.ShowPaenl(this);
+        Manager.UI.ShowPanel(this);
     }
 }

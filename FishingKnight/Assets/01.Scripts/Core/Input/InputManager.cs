@@ -66,6 +66,5 @@ namespace OMG.Inputs
             enable = value;
         }
     }
-
 }
 

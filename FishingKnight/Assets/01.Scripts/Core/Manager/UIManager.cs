@@ -27,7 +27,7 @@ public class UIManager
         panelStack = new Stack<UIPanel>();
     }
 
-    public void ShowPaenl(UIPanel panel)
+    public void ShowPanel(UIPanel panel)
     {
         if (panel == null)
             return;

@@ -48,4 +48,12 @@ public class CharacterInventory : CharacterComponent
 
         itemDictionary[item.Info.ItemType].Remove(inventoryItem);
     }
+
+    public void RemoveItem(InventoryItem item)
+    {
+        if (item == null) 
+            return;
+
+        itemDictionary[item.Info.ItemType].Remove(item);
+    }
 }

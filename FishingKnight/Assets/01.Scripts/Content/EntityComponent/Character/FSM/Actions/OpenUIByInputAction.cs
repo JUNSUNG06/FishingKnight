@@ -28,6 +28,7 @@ public class OpenUIByInputAction : FSMAction
             InventoryUIPanel ui = Manager.UI.MainCanvas.GetPanel<InventoryUIPanel>();
             
             ui.SetInventory(character.Inventory);
+            ui.SetInventoryAction(InventoryActionType.Equipment, InventoryActionType.Remove);
             ui.Show();
         }
     }
