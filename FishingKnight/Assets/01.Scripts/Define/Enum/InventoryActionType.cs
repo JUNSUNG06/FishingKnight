@@ -1,6 +1,6 @@
 public enum InventoryActionType
 {
-    Equipment,
+    Hold,
     Remove,
     Sell,
 }

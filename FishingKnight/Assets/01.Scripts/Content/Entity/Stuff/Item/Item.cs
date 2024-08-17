@@ -20,7 +20,6 @@ public class Item : Stuff
 
         if(performer.TryGetComponent<CharacterInventory>(out CharacterInventory inventory))
         {
-            Debug.Log(performer.name);
             inventory.AddItem(this);
         }
     }

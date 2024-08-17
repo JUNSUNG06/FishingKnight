@@ -5,4 +5,5 @@ public enum PlayInputActionType
     Interact,
     Cancel,
     OpenInventory,
+    OpenHoldItem,
 }

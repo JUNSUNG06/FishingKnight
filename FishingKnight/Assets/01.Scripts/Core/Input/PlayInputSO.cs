@@ -41,4 +41,9 @@ public class PlayInputSO : InputSO<PlayInputActionType>, IPlayActions
     {
         inputActions[PlayInputActionType.OpenInventory]?.Invoke(context);
     }
+
+    public void OnOpenHoldItem(InputAction.CallbackContext context)
+    {
+        inputActions[PlayInputActionType.OpenHoldItem]?.Invoke(context);
+    }
 }

@@ -12,6 +12,7 @@ public class OpenUIByInputAction : FSMAction
         base.EnterState();
 
         input.RegistAction(PlayInputActionType.OpenInventory, OpenInventoryUI);
+        input.RegistAction(PlayInputActionType.OpenHoldItem, OpenHoldItemUI);
     }
 
     public override void ExitState()
@@ -19,6 +20,7 @@ public class OpenUIByInputAction : FSMAction
         base.ExitState();
 
         input.UnregistAction(PlayInputActionType.OpenInventory, OpenInventoryUI);
+        input.UnregistAction(PlayInputActionType.OpenHoldItem, OpenHoldItemUI);
     }
 
     private void OpenInventoryUI(CallbackContext context)
@@ -28,7 +30,18 @@ public class OpenUIByInputAction : FSMAction
             InventoryUIPanel ui = Manager.UI.MainCanvas.GetPanel<InventoryUIPanel>();
             
             ui.SetInventory(character.Inventory);
-            ui.SetInventoryAction(InventoryActionType.Equipment, InventoryActionType.Remove);
+            ui.SetInventoryAction(InventoryActionType.Hold, InventoryActionType.Remove);
+            ui.Show();
+        }
+    }
+
+    private void OpenHoldItemUI(CallbackContext context)
+    {
+        if (context.started)
+        {
+            HoldItemUIPanel ui = Manager.UI.MainCanvas.GetPanel<HoldItemUIPanel>();
+
+            ui.SetHolder(character.Holder);
             ui.Show();
         }
     }

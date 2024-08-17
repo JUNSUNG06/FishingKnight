@@ -20,8 +20,6 @@ public class ItemDescriptor : UIObject
         image.sprite = item.Info.ItemImage;
         nameText.text = item.Info.ItemName;
         descriptionText.text = item.Info.Description;
-
-        ClearActionButton();
     }
 
     public void CreateActionButton(string text, Action action)

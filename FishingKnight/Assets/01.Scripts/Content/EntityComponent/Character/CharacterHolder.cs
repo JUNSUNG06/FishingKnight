@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 public class CharacterHolder : CharacterComponent
@@ -19,6 +20,7 @@ public class CharacterHolder : CharacterComponent
     [SerializeField] private List<Socket> holdSockets;
     [SerializeField] private Socket handSocket;
     private Dictionary<SocketType, List<SocketHoldPair>> socketHoldPairDictionary;
+    public Dictionary<SocketType, List<SocketHoldPair>> SocketHoldPairDictionary => socketHoldPairDictionary;
 
     private IEquipment equipmentObject;
 
@@ -27,11 +29,12 @@ public class CharacterHolder : CharacterComponent
         base.Initialize(owner);
 
         socketHoldPairDictionary = new Dictionary<SocketType, List<SocketHoldPair>>();
+        foreach(SocketType type in Enum.GetValues(typeof(SocketType)))
+        {
+            socketHoldPairDictionary.Add(type, new List<SocketHoldPair>());
+        }
         foreach (Socket socket in holdSockets)
         {
-            if (socketHoldPairDictionary.ContainsKey(socket.Type) == false)
-                socketHoldPairDictionary.Add(socket.Type, new List<SocketHoldPair>());
-
             socketHoldPairDictionary[socket.Type].Add(new SocketHoldPair(socket, null));
         }
     }
@@ -86,6 +89,8 @@ public class CharacterHolder : CharacterComponent
 
     public bool IsHoldingObject(IHold holdObject)
     {
+        if(holdObject == null)
+            return false;
         if (socketHoldPairDictionary.ContainsKey(holdObject.SocketType) == false)
             return false;
 
@@ -110,11 +115,31 @@ public class CharacterHolder : CharacterComponent
         return false;
     }
 
+    public IEquipment GetEquipmentObject()
+    {
+        return equipmentObject;
+    }
+
     public Socket GetHoldingObjectSocket(IHold holdObject)
     {
         if (socketHoldPairDictionary.ContainsKey(holdObject.SocketType) == false)
             return null;
 
         return socketHoldPairDictionary[holdObject.SocketType].Find(x => x.HoldObject == holdObject).Socket;
+    }
+
+    public List<IHold> GetHoldObjects(SocketType socketType)
+    {
+        List<IHold> result = new List<IHold>();
+
+        foreach(SocketHoldPair pair in socketHoldPairDictionary[socketType])
+        {
+            if (pair.HoldObject == null)
+                continue;
+
+            result.Add(pair.HoldObject);
+        }
+
+        return result;
     }
 }

@@ -22,11 +22,17 @@ public class Equipment : Item, IHold, IEquipment
         transform.SetParent(holdSocket.transform);
         transform.localPosition = holdAnchor.localPosition;
         transform.localRotation = holdAnchor.localRotation;
+
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     public void Unhold()
     {
-        Destroy(gameObject);
+        CharacterInventory inventory = owner.GetEntityComponent<CharacterInventory>();
+        if (inventory == null)
+            return;
+
+        inventory.AddItem(this);
     }
 
     void IEquipment.Equipment(Socket equipmentSocket, CharacterHolder holder)

@@ -82,11 +82,12 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
         GameObject target = eventData.pointerCurrentRaycast.gameObject;
         if (target.TryGetComponent<InventoryItemSlot>(out InventoryItemSlot slot))
         {
-            itemDescriptor.SetItem(slot.Item);
+            itemDescriptor.ClearActionButton();
             foreach(InventoryActionType action in actions)
             {
                 CreateActionButton(action, slot);
             }
+            itemDescriptor.SetItem(slot.Item);
             itemDescriptor.Show();
         }
     }
@@ -101,7 +102,7 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
 
         switch (type)
         {
-            case InventoryActionType.Equipment:
+            case InventoryActionType.Hold:
                 {
                     CharacterHolder holder = inventory.Character.GetEntityComponent<CharacterHolder>();
                     if (holder == null)
@@ -146,9 +147,10 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
                 break;
         }
 
+        Debug.Log(1);
         if (text == "" || action == null)
             return;
-
+        Debug.Log(2);
         itemDescriptor.CreateActionButton(text, action);
     }
 }
