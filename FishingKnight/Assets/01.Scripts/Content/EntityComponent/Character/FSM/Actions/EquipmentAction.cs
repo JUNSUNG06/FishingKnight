@@ -21,6 +21,9 @@ public class EquipmentAction : FSMAction
 
         func = (h) =>
         {
+            if (h == null)
+                return false;
+
             if (h.Body.TryGetComponent<IEquipment>(out IEquipment equip))
             {
                 if (equip.EquipmentType == equipType)
@@ -42,7 +45,6 @@ public class EquipmentAction : FSMAction
                     {
                         if (hold.Body.TryGetComponent<IEquipment>(out IEquipment equip))
                         {
-
                             character.Holder.Equipment(equip);
                         }
                     }

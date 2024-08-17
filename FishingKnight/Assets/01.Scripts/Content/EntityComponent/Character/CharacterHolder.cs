@@ -46,7 +46,7 @@ public class CharacterHolder : CharacterComponent
             return;
 
         socketHoldPair.HoldObject = holdObject;
-        socketHoldPair.Socket.Use();
+        socketHoldPair.Socket.Use(socketHoldPair.HoldObject.Body);
         holdObject.Hold(socketHoldPair.Socket, this);
     }
 
@@ -71,7 +71,7 @@ public class CharacterHolder : CharacterComponent
 
         this.equipmentObject = equipmentObject;
         equipmentObject.Equipment(handSocket, this);
-        handSocket.Use();
+        handSocket.Use(equipmentObject.Body);
     }
 
     public void Unequipment()

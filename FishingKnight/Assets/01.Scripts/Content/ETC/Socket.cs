@@ -10,13 +10,19 @@ public class Socket : MonoBehaviour
     [SerializeField] private SocketType type;
     public SocketType Type => type;
 
-    public void Use()
+    private GameObject socketedObject;
+    public GameObject SocketedObject => socketedObject;
+
+    public void Use(GameObject socketedObject)
     {
         isUse = true;
+        this.socketedObject = socketedObject;
     }
 
     public void Unuse()
     {
         isUse = false;
+
+        socketedObject = null;
     }
 }

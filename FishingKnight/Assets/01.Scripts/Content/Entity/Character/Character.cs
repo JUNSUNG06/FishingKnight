@@ -14,6 +14,7 @@ public class Character : Entity, IDamage
     private CharacterInteract interact;
     private CharacterHolder holder;
     private CharacterInventory inventory;
+    private CharacterFishing fishing;
     private Collider col;
 
     public CharacterMovement Movement => movement;
@@ -23,6 +24,7 @@ public class Character : Entity, IDamage
     public CharacterInteract Interact => interact;
     public CharacterHolder Holder => holder;
     public CharacterInventory Inventory => inventory;
+    public CharacterFishing Fishing => fishing;
     public Collider Collider => col;
 
     protected override void Awake()
@@ -36,6 +38,7 @@ public class Character : Entity, IDamage
         interact = GetEntityComponent<CharacterInteract>();
         holder = GetEntityComponent<CharacterHolder>();
         inventory = GetEntityComponent<CharacterInventory>();
+        fishing = GetEntityComponent<CharacterFishing>();
         col = GetComponent<Collider>();
 
         //test

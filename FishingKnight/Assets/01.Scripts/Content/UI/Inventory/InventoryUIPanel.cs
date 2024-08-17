@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEditor.Progress;
 
 public class InventoryUIPanel : UIPanel, IPointerClickHandler
 {
@@ -102,20 +103,19 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
         {
             case InventoryActionType.Equipment:
                 {
+                    CharacterHolder holder = inventory.Character.GetEntityComponent<CharacterHolder>();
+                    if (holder == null)
+                        return;
+
+                    IHold holdableObject = itemSlot.Item.Info.Prefab.GetComponent<IHold>();
+                    if (holdableObject == null)
+                        return;
+
                     text = "Hold";
                     action = () =>
                     {
-                        CharacterHolder holder = inventory.Character.GetEntityComponent<CharacterHolder>();
-                        if (holder == null)
-                            return;
-
-                        Item item = inventory.PopItem(itemSlot.Item);
-                        if (item == null)
-                            return;
-
-                        IHold holdableObject = item.GetComponent<IHold>();
-                        if (holdableObject == null)
-                            return;
+                        Item item = inventory.PopItem(itemSlot.Item, inventory.Character);
+                        holdableObject = item.GetComponent<IHold>();
 
                         holder.Hold(holdableObject);
 

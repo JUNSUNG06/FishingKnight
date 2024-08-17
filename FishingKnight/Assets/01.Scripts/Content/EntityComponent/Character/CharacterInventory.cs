@@ -28,9 +28,10 @@ public class CharacterInventory : CharacterComponent
         Destroy(item.gameObject);
     }
 
-    public Item PopItem(InventoryItem inventoryItem)
+    public Item PopItem(InventoryItem inventoryItem, Entity owner = null)
     {
         Item item = Instantiate(inventoryItem.Info.Prefab);
+        item.SetOwner(owner);
 
         RemoveItem(item);
 
