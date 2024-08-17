@@ -24,7 +24,18 @@ public class CharacterInventory : CharacterComponent
 
         InventoryItem inventoryItem = new InventoryItem(item);
 
-        itemDictionary[inventoryItem.Info.ItemType].Add(inventoryItem);
+        if (ItemDictionary[inventoryItem.Info.ItemType].Contains(inventoryItem))
+        {
+            if(inventoryItem.IsUnique == false)
+            {
+                ItemDictionary[inventoryItem.Info.ItemType].Find(x => x.Equals(inventoryItem)).IncreaseCount();
+            }
+        }
+        else
+        {
+            itemDictionary[inventoryItem.Info.ItemType].Add(inventoryItem);
+        }
+        
         Destroy(item.gameObject);
     }
 
@@ -47,7 +58,10 @@ public class CharacterInventory : CharacterComponent
         if (inventoryItem == null)
             return;
 
-        itemDictionary[item.Info.ItemType].Remove(inventoryItem);
+        inventoryItem.DecreaseCount();
+
+        if(inventoryItem.Count <= 0)
+            itemDictionary[item.Info.ItemType].Remove(inventoryItem);
     }
 
     public void RemoveItem(InventoryItem item)
@@ -55,6 +69,9 @@ public class CharacterInventory : CharacterComponent
         if (item == null) 
             return;
 
-        itemDictionary[item.Info.ItemType].Remove(item);
+        item.DecreaseCount();
+
+        if (item.Count <= 0)
+            itemDictionary[item.Info.ItemType].Remove(item);
     }
 }

@@ -134,7 +134,8 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
 
                         DrawInventory();
 
-                        itemDescriptor.Hide();
+                        if(itemSlot.Item.Count == 0)
+                            itemDescriptor.Hide();
                     };
                 }
                 break;
