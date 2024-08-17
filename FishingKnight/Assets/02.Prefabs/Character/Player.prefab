@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 5310424183830005291}
   - component: {fileID: 2822703962209408570}
   - component: {fileID: 552130805881764682}
+  - component: {fileID: 3376522912733398801}
   m_Layer: 0
   m_Name: FishingEndState
   m_TagString: Untagged
@@ -187,6 +188,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51ef24152be8e314ab2458d2b655f6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3376522912733398801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710628746127002321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75041439eca263a40aa4328dbae5cb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1031602397657483525
@@ -585,6 +598,7 @@ GameObject:
   - component: {fileID: 4943933178662234888}
   - component: {fileID: 5094727651766468614}
   - component: {fileID: 3715448782230653600}
+  - component: {fileID: 5659365867645936656}
   m_Layer: 0
   m_Name: WalkState
   m_TagString: Untagged
@@ -666,6 +680,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
+--- !u!114 &5659365867645936656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815662922799366202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68d7981ca405684dae831401db3fb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
 --- !u!1 &1869782435147082463
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5282392617983580066}
   - component: {fileID: 5231618167083698399}
+  - component: {fileID: 611624810434158834}
   m_Layer: 0
   m_Name: FishingState
   m_TagString: Untagged
@@ -716,6 +744,20 @@ MonoBehaviour:
   applyRootMotion: 0
   resetRootMotion: 0
   alignToRootMotion: 0
+--- !u!114 &611624810434158834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869782435147082463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f599c82024b965944af8c0b948d82c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minCatchDelay: 10
+  maxCatchDelay: 60
 --- !u!1 &2012238480215039426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,6 +1836,7 @@ GameObject:
   - component: {fileID: 174331276148256470}
   - component: {fileID: 8719659041350846915}
   - component: {fileID: 7494969996607492807}
+  - component: {fileID: 7300434281103657643}
   m_Layer: 0
   m_Name: FishingStartState
   m_TagString: Untagged
@@ -1860,6 +1903,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionType: 0
   equipType: 0
+--- !u!114 &7300434281103657643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3900759419360443640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047ebbfab965b7548ac685aaba369aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3946532845070214393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,6 +2306,7 @@ GameObject:
   - component: {fileID: 3748965316277251564}
   - component: {fileID: 6426786556704876553}
   - component: {fileID: 8767615634855248852}
+  - component: {fileID: 2831871615925340799}
   m_Layer: 0
   m_Name: RunState
   m_TagString: Untagged
@@ -2329,6 +2385,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cf8a2766f6a0e845892c9db7bc8cdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
+--- !u!114 &2831871615925340799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692804307714586120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68d7981ca405684dae831401db3fb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
@@ -2568,6 +2637,7 @@ GameObject:
   - component: {fileID: 670314291759399267}
   - component: {fileID: 3878220819421365204}
   - component: {fileID: 1759041096934689224}
+  - component: {fileID: 753134258414731236}
   - component: {fileID: 4914202896612743593}
   m_Layer: 0
   m_Name: StandUpState
@@ -2634,6 +2704,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aefcbc70573d974dbd10b39db58fee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &753134258414731236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435442856318321746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047ebbfab965b7548ac685aaba369aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4914202896612743593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2698,6 +2780,8 @@ GameObject:
   - component: {fileID: 2169951086018779310}
   - component: {fileID: 3877624453771220508}
   - component: {fileID: 6305542200600140636}
+  - component: {fileID: 2078508083042782339}
+  - component: {fileID: 5113302367548235972}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2875,7 +2959,30 @@ MonoBehaviour:
   holdSockets:
   - {fileID: 6351745817050285583}
   handSocket: {fileID: 3414976847052083431}
-  test: {fileID: 0}
+--- !u!114 &2078508083042782339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451601380786409321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6455dfdb6109c7642b845884aa69f093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5113302367548235972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451601380786409321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1921e5af492244ba053aa7039bf660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5604831333080360259
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,6 +3679,7 @@ GameObject:
   - component: {fileID: 4621771282837148890}
   - component: {fileID: 3729667006684497055}
   - component: {fileID: 3991327799215236587}
+  - component: {fileID: 3469634175047397493}
   m_Layer: 0
   m_Name: IdleState
   m_TagString: Untagged
@@ -3649,6 +3757,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cf8a2766f6a0e845892c9db7bc8cdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
+--- !u!114 &3469634175047397493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331575144316926279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68d7981ca405684dae831401db3fb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
