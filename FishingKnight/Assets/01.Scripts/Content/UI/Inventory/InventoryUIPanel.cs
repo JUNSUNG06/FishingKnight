@@ -59,10 +59,7 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
 
         List<InventoryItem> items = inventory.ItemDictionary[currentItemType];
 
-        for(int i = slotParent.childCount - 1; i >= 0; i--)
-        {
-            Destroy(slotParent.GetChild(i).gameObject);
-        }
+        slotParent.ClearChild();
 
         for(int i = 0; i < items.Count; i++)
         {

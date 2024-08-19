@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8682418757569681316}
   - component: {fileID: 506277593872098914}
   - component: {fileID: 406954315681198572}
-  - component: {fileID: 8327087410763527812}
+  - component: {fileID: 4661120258803015715}
   m_Layer: 5
   m_Name: ChoiceActionButton
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 2.01
+  m_PixelsPerUnitMultiplier: 3.5
 --- !u!114 &406954315681198572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8327087410763527812
+--- !u!114 &4661120258803015715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,10 +131,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 937248292752778918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7470ca717f63e264f824d4927fc3985e, type: 3}
+  m_Script: {fileID: 11500000, guid: 75f8040880c742c44842950aba834a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2286153574454953219}
+  background: {fileID: 506277593872098914}
+  fadeTime: 0.1
 --- !u!1 &3996808710452142411
 GameObject:
   m_ObjectHideFlags: 0

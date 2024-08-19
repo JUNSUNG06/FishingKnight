@@ -16,10 +16,7 @@ public class ChoiceUIPanel : UIPanel
 
     public void SetActionButton(params ChoiceActionButtonInfo[] actionbuttonInfos)
     {
-        for(int i = 0; i < buttonContainer.childCount - 1; i++)
-        {
-            Destroy(buttonContainer.GetChild(i).gameObject);
-        }
+        transform.ClearChild();
 
         for(int i = 0; i < actionbuttonInfos.Length; i++)
         {

@@ -32,9 +32,6 @@ public class ItemDescriptor : UIObject
 
     public void ClearActionButton()
     {
-        for(int i = actionButtonParent.childCount - 1; i >= 0; i--)
-        {
-            Destroy(actionButtonParent.GetChild(i).gameObject);
-        }
+        actionButtonParent.ClearChild();
     }
 }
