@@ -32,6 +32,11 @@ public class UIManager
         if (panel == null)
             return;
 
+        if(PanelStack.Count > 0)
+        {
+            panelStack.Peek().Hide();
+        }
+
         panelStack.Push(panel);
 
         if(panelStack.Count == 1)
@@ -55,6 +60,10 @@ public class UIManager
             InputManager.GetInputSO<UIInputActionType>(InputMapType.UI)
                 .UnregistAction(UIInputActionType.Back, HidePanelByInptu);
             InputManager.ChangeInputMap(InputMapType.Play);
+        }
+        else
+        {
+            panelStack.Peek().OnlyShow();
         }
     }
 

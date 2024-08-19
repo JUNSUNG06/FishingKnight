@@ -10,4 +10,9 @@ public class UIPanel : UIObject
 
         Manager.UI.ShowPanel(this);
     }
+
+    public virtual void OnlyShow()
+    {
+        base.Show();
+    }
 }

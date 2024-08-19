@@ -12,9 +12,9 @@ public class ChoiceActionButton : ActionButton, IPointerEnterHandler, IPointerEx
     [Space]
     [SerializeField] private float fadeTime;
 
-    public override void Initialize()
+    public override void Show()
     {
-        base.Initialize();
+        base.Show();
 
         background.DOFade(0f, 0f);
     }
