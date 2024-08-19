@@ -7,6 +7,17 @@ public class OpenUIByInputAction : FSMAction
 {
     [SerializeField] private PlayInputSO input;
 
+    private CharacterInventory inventory;
+    private CharacterHolder holder;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        inventory = character.GetEntityComponent<CharacterInventory>();
+        holder = character.GetEntityComponent<CharacterHolder>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
@@ -29,7 +40,7 @@ public class OpenUIByInputAction : FSMAction
         {
             InventoryUIPanel ui = Manager.UI.MainCanvas.GetPanel<InventoryUIPanel>();
             
-            ui.SetInventory(character.Inventory);
+            ui.SetInventory(character, inventory);
             ui.SetInventoryAction(InventoryActionType.Hold, InventoryActionType.Remove);
             ui.Show();
         }
@@ -41,7 +52,7 @@ public class OpenUIByInputAction : FSMAction
         {
             HoldItemUIPanel ui = Manager.UI.MainCanvas.GetPanel<HoldItemUIPanel>();
 
-            ui.SetHolder(character.Holder);
+            ui.SetHolder(holder);
             ui.Show();
         }
     }

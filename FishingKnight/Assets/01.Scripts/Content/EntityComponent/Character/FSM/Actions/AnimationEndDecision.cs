@@ -7,12 +7,21 @@ public class AnimationEndDecision : FSMDecision
 {
     private bool isEnd;
 
+    private EntityAnimation anim;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        anim = character.GetEntityComponent<EntityAnimation>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
 
         isEnd = false;
-        character.Anim.Event.RegistEvent(AnimationEventType.End, onAnimationEnd);
+        anim.Event.RegistEvent(AnimationEventType.End, onAnimationEnd);
     }
 
     public override void Satisfy()
@@ -24,7 +33,7 @@ public class AnimationEndDecision : FSMDecision
     {
         base.ExitState();
 
-        character.Anim.Event.UnregistEvent(AnimationEventType.End, onAnimationEnd);
+        anim.Event.UnregistEvent(AnimationEventType.End, onAnimationEnd);
     }
 
     private void onAnimationEnd()

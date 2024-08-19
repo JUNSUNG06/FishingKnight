@@ -39,6 +39,24 @@ public class CharacterInventory : CharacterComponent
         Destroy(item.gameObject);
     }
 
+    public void AddItem(InventoryItem inventoryItem)
+    {
+        if (inventoryItem == null)
+            return;
+
+        if (ItemDictionary[inventoryItem.Info.ItemType].Contains(inventoryItem))
+        {
+            if (inventoryItem.IsUnique == false)
+            {
+                ItemDictionary[inventoryItem.Info.ItemType].Find(x => x.Equals(inventoryItem)).IncreaseCount();
+            }
+        }
+        else
+        {
+            itemDictionary[inventoryItem.Info.ItemType].Add(inventoryItem);
+        }
+    }
+
     public Item PopItem(InventoryItem inventoryItem, Entity owner = null)
     {
         Item item = Instantiate(inventoryItem.Info.Prefab);

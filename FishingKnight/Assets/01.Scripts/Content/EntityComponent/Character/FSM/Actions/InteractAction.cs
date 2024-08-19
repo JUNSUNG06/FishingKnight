@@ -7,6 +7,15 @@ public class InteractAction : FSMAction
 {
     [SerializeField] private PlayInputSO input;
 
+    private CharacterInteract interact;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        interact = character.GetEntityComponent<CharacterInteract>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
@@ -18,7 +27,7 @@ public class InteractAction : FSMAction
     {
         base.UpdateState();
 
-        character.Interact.FindObject();
+        interact.FindObject();
     }
 
     public override void ExitState()
@@ -31,6 +40,6 @@ public class InteractAction : FSMAction
     private void Interact(CallbackContext context)
     {
         if (context.started)
-            character.Interact.Interact();
+            interact.Interact();
     }
 }

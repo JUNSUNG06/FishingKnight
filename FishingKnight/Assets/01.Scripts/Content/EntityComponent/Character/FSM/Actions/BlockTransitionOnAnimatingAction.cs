@@ -4,29 +4,40 @@ using UnityEngine;
 
 public class BlockTransitionOnAnimatingAction : FSMAction
 {
+    private EntityAnimation anim;
+    private CharacterFSM fsm;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        anim = character.GetEntityComponent<EntityAnimation>();
+        fsm = character.GetEntityComponent<CharacterFSM>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
 
-        character.Anim.Event.RegistEvent(AnimationEventType.Start, BlockTransition);
-        character.Anim.Event.RegistEvent(AnimationEventType.End, UnblockTransition);
+        anim.Event.RegistEvent(AnimationEventType.Start, BlockTransition);
+        anim.Event.RegistEvent(AnimationEventType.End, UnblockTransition);
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        character.Anim.Event.UnregistEvent(AnimationEventType.Start, BlockTransition);
-        character.Anim.Event.UnregistEvent(AnimationEventType.End, UnblockTransition);
+        anim.Event.UnregistEvent(AnimationEventType.Start, BlockTransition);
+        anim.Event.UnregistEvent(AnimationEventType.End, UnblockTransition);
     }
 
     private void BlockTransition()
     {
-        character.FSM.CanTransition = false;
+        fsm.CanTransition = false;
     }
 
     private void UnblockTransition()
     {
-        character.FSM.CanTransition = true;
+        fsm.CanTransition = true;
     }
 }

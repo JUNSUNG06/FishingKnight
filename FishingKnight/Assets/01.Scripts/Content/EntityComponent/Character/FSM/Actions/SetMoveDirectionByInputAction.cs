@@ -7,6 +7,15 @@ public class SetMoveDirectionByInputAction : FSMAction
 {
     [SerializeField] private PlayInputSO input;
 
+    private CharacterMovement movement;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+        
+        movement = character.GetEntityComponent<CharacterMovement>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
@@ -27,7 +36,7 @@ public class SetMoveDirectionByInputAction : FSMAction
         {
             Vector2 input = context.ReadValue<Vector2>();
             Vector3 moveDir = new Vector3(input.x, 0, input.y);
-            character.Movement.SetMoveDirection(moveDir);
+            movement.SetMoveDirection(moveDir);
         }
     }
 }

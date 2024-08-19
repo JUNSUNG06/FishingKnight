@@ -6,6 +6,9 @@ public class FishingChair : Chair
 {
     [SerializeField] private FishingSpot fishingSpot;
 
+    private EntityAnimation performerAnim;
+    private CharacterFSM performerFSM;
+
     public override void Interact(Entity performer)
     {
         base.Interact(performer);
@@ -38,19 +41,22 @@ public class FishingChair : Chair
         fishing.SetFishingSpot(fishingSpot);
         fishing.SetFishingRob(holdingObject.Body.GetComponent<FishingRob>());
 
-        interacter.Anim.Event.RegistEvent(AnimationEventType.Start, RegistChangeState);
+        performerAnim = performer.GetEntityComponent<EntityAnimation>();
+        performerFSM = performer.GetEntityComponent<CharacterFSM>();
+
+        performerAnim.Event.RegistEvent(AnimationEventType.Start, RegistChangeState);
     }
 
     private void RegistChangeState()
     {
-        interacter.Anim.Event.UnregistEvent(AnimationEventType.Start, RegistChangeState);
-        interacter.Anim.Event.RegistEvent(AnimationEventType.End, ChangeState);
+        performerAnim.Event.UnregistEvent(AnimationEventType.Start, RegistChangeState);
+        performerAnim.Event.RegistEvent(AnimationEventType.End, ChangeState);
     }
 
     private void ChangeState()
     {
-        interacter.FSM.SetNextState("FishingStart");
+        performerFSM.SetNextState("FishingStart");
 
-        interacter.Anim.Event.UnregistEvent(AnimationEventType.End, ChangeState);
+        performerAnim.Event.UnregistEvent(AnimationEventType.End, ChangeState);
     }
 }

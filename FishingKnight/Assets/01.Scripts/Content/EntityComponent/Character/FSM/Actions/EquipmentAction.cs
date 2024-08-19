@@ -15,9 +15,13 @@ public class EquipmentAction : FSMAction
 
     private Func<IHold, bool> func;
 
+    private CharacterHolder holder;
+
     public override void Initialize(Character character)
     {
         base.Initialize(character);
+
+        holder = character.GetEntityComponent<CharacterHolder>();
 
         func = (h) =>
         {
@@ -41,17 +45,17 @@ public class EquipmentAction : FSMAction
         {
             case EquipmentActionType.Equipment:
                 {
-                    if (character.Holder.TryGetHoldingObject(func, out IHold hold))
+                    if (holder.TryGetHoldingObject(func, out IHold hold))
                     {
                         if (hold.Body.TryGetComponent<IEquipment>(out IEquipment equip))
                         {
-                            character.Holder.Equipment(equip);
+                            holder.Equipment(equip);
                         }
                     }
                 }
                 break;
             case EquipmentActionType.Unequipment:
-                character.Holder.Unequipment();
+                holder.Unequipment();
                 break;
         }
     }

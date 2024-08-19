@@ -8,11 +8,20 @@ public class FishingAction : FSMAction
     [SerializeField] private float maxCatchDelay;
     private float catchDelay;
 
+    private CharacterFishing fishing;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        fishing = character.GetEntityComponent<CharacterFishing>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
 
-        character.Fishing.CurrentRob.OnItemStucked += OnStuckedItem;
+        fishing.CurrentRob.OnItemStucked += OnStuckedItem;
 
         catchDelay = UnityEngine.Random.Range(minCatchDelay, maxCatchDelay);
 
@@ -23,7 +32,7 @@ public class FishingAction : FSMAction
     {
         base.ExitState();
 
-        character.Fishing.CurrentRob.OnItemStucked -= OnStuckedItem;
+        fishing.CurrentRob.OnItemStucked -= OnStuckedItem;
 
         StopAllCoroutines();
     }
@@ -32,9 +41,9 @@ public class FishingAction : FSMAction
     {
         yield return new WaitForSeconds(catchDelay);
 
-        Item item = character.Fishing.CurrentSpot.GetItem();
+        Item item = fishing.CurrentSpot.GetItem();
 
-        character.Fishing.CurrentRob.StuckItem(item);
+        fishing.CurrentRob.StuckItem(item);
     }
 
     private void OnStuckedItem(Item item)

@@ -11,6 +11,7 @@ public class ItemSO : ScriptableObject
     [SerializeField] private Sprite itemImage;
     [SerializeField] private string itemName;
     [TextArea][SerializeField] private string description;
+    [SerializeField] private int price;
 
     public ItemType ItemType => itemType;
     public Item Prefab => prefab;
@@ -18,4 +19,5 @@ public class ItemSO : ScriptableObject
     public Sprite ItemImage => itemImage;
     public string ItemName => itemName;
     public string Description => description;
+    public int Price => price;
 }

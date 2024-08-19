@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryActionButton : UIObject
+public class ActionButton : UIObject
 {
     [SerializeField] private TextMeshProUGUI text;
     private Button button;

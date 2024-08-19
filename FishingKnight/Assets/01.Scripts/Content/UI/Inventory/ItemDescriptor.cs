@@ -12,7 +12,7 @@ public class ItemDescriptor : UIObject
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private Transform actionButtonParent;
-    [SerializeField] private InventoryActionButton actionButtonPrefab;
+    [SerializeField] private ActionButton actionButtonPrefab;
 
     public void SetItem(InventoryItem item)
     {
@@ -24,7 +24,7 @@ public class ItemDescriptor : UIObject
 
     public void CreateActionButton(string text, Action action)
     {
-        InventoryActionButton actionButton = Instantiate(actionButtonPrefab, actionButtonParent);
+        ActionButton actionButton = Instantiate(actionButtonPrefab, actionButtonParent);
         actionButton.Initialize();
         actionButton.SetText(text);
         actionButton.SetAction(action);

@@ -7,17 +7,26 @@ public class SetColliderAction : FSMAction
 {
     [SerializeField] private bool active;
 
+    private Collider characterCol;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        characterCol = character.GetComponent<Collider>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
 
-        character.Collider.enabled = active;
+        characterCol.enabled = active;
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        character.Collider.enabled = !active;
+        characterCol.enabled = !active;
     }
 }

@@ -15,9 +15,15 @@ public class FSMState : FSMObject
     [SerializeField] private bool alignToRootMotion;
     public List<string> PlayAnimations => playAnimations;
 
+    private EntityAnimation anim;
+    private CharacterFSM fsm;
+
     public override void Initialize(Character owner)
     {
         base.Initialize(owner);
+
+        anim = owner.GetEntityComponent<EntityAnimation>();
+        fsm = owner.GetEntityComponent<CharacterFSM>();
 
         actions = new List<FSMAction>();
         GetComponents<FSMAction>(actions);
@@ -50,15 +56,15 @@ public class FSMState : FSMObject
         }
 
         if (resetRootMotion)
-            character.Anim.ResetRootMotion();
+            anim.ResetRootMotion();
         else if(alignToRootMotion)
-            character.Anim.AlignToRootMotion();
-        character.Anim.Animator.applyRootMotion = applyRootMotion;
+            anim.AlignToRootMotion();
+        anim.Animator.applyRootMotion = applyRootMotion;
 
         for(int i = 0; i <  playAnimations.Count; i++)
         {
-            if (character.FSM.PrevState != null && !character.FSM.PrevState.PlayAnimations.Contains(playAnimations[i]))
-                character.Anim.Animator.SetTrigger(playAnimations[i]);
+            if (fsm.PrevState != null && !fsm.PrevState.PlayAnimations.Contains(playAnimations[i]))
+                anim.Animator.SetTrigger(playAnimations[i]);
         }
     }
 

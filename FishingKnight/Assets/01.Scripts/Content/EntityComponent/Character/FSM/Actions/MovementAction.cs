@@ -7,38 +7,49 @@ public class MovementAction : FSMAction
     [Range(0f, 1f)][SerializeField] private float moveSpeedWeight;
     [SerializeField] private bool turn = true;
 
+    private CharacterMovement movement;
+    private EntityAnimation anim;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        movement = character.GetEntityComponent<CharacterMovement>();
+        anim = character.GetEntityComponent<EntityAnimation>();
+    }
+
     public override void EnterState()
     {
-        character.Movement.OnMoveSpeedChanged += OnMoveSpeedChange;
-        character.Movement.SetMoveSpeed(moveSpeedWeight);
+        movement.OnMoveSpeedChanged += OnMoveSpeedChange;
+        movement.SetMoveSpeed(moveSpeedWeight);
 
-        character.Movement.OnMoveDirectionChanged += OnMoveDirectionChanged;
+        movement.OnMoveDirectionChanged += OnMoveDirectionChanged;
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
 
-        character.Movement.Move();
+        movement.Move();
     }
 
     public override void ExitState()
     {
-        character.Movement.OnMoveSpeedChanged -= OnMoveSpeedChange;
-        character.Movement.OnMoveDirectionChanged -= OnMoveDirectionChanged;
+        movement.OnMoveSpeedChanged -= OnMoveSpeedChange;
+        movement.OnMoveDirectionChanged -= OnMoveDirectionChanged;
     }
 
     private void OnMoveSpeedChange(float prev, float next)
     {
-        float threshold = next / character.Movement.MaxMoveSpeed;
-        character.Anim.Animator.SetFloat("move_speed", threshold);
+        float threshold = next / movement.MaxMoveSpeed;
+        anim.Animator.SetFloat("move_speed", threshold);
     }
 
     private void OnMoveDirectionChanged(Vector3 prev, Vector3 next)
     {
         if(turn)
         {
-            character.Movement.LookMoveDirection();
+            movement.LookMoveDirection();
         }
     }
 }

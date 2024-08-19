@@ -18,3 +18,4 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: 6579b6ad5b013fa4d9a10ede13a5c1b3, type: 3}
   itemName: Fishing Rob
   description: Basic Fishing Rob
+  price: 1000

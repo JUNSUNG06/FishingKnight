@@ -8,9 +8,13 @@ public class FSMTransition : FSMObject
 
     private List<FSMDecision> decisions;
 
+    private CharacterFSM fsm;
+
     public override void Initialize(Character owner)
     {
         base.Initialize(owner);
+
+        fsm = owner.GetEntityComponent<CharacterFSM>();
 
         decisions = new List<FSMDecision>();
         GetComponents<FSMDecision>(decisions);
@@ -40,7 +44,7 @@ public class FSMTransition : FSMObject
                 return;
         }
 
-        character.FSM.SetNextState(nextState);
+        fsm.SetNextState(nextState);
     }
 
     public override void ExitState()

@@ -15,7 +15,7 @@ public class Chair : Stuff
         if(performer.TryGetComponent<Character>(out Character character))
         {
             interacter = character;
-            interacter.FSM.SetNextState("Sit");
+            interacter.GetEntityComponent<CharacterFSM>().SetNextState("Sit");
             interacter.transform.SetPositionAndRotation(sitPoint.position, sitPoint.rotation);
         }
     }

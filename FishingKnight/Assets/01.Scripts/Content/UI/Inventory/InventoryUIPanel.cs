@@ -9,6 +9,7 @@ using static UnityEditor.Progress;
 public class InventoryUIPanel : UIPanel, IPointerClickHandler
 {
     private CharacterInventory inventory;
+    private Entity opener;
     private ItemType currentItemType;
     [SerializeField] private TextMeshProUGUI menuText;
 
@@ -21,9 +22,10 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
 
     private InventoryActionType[] actions;
 
-    public void SetInventory(CharacterInventory inventory)
+    public void SetInventory(Entity opener, CharacterInventory inventory)
     {
         this.inventory = inventory;
+        this.opener = opener;
     }
 
     public override void Show()
@@ -142,15 +144,70 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
                 break;
             case InventoryActionType.Sell:
                 {
-                    //
+                    CharacterWallet wallet = inventory.Character.GetEntityComponent<CharacterWallet>();
+                    if (wallet == null)
+                        return;
+
+                    CharacterInventory openerInventory = opener.GetEntityComponent<CharacterInventory>();
+                    if (openerInventory == null)
+                        return; 
+
+                    text = "Sell";
+                    action = () =>
+                    {
+                        wallet.AddMoeny(itemSlot.Item.Info.Price);
+                        
+                        inventory.RemoveItem(itemSlot.Item);//player
+                        
+                        DrawInventory();
+
+                        if (itemSlot.Item.Count == 0)
+                        {
+                            itemDescriptor.Hide();
+                            itemSlot.Item.IncreaseCount();
+                        }
+                        
+                        openerInventory.AddItem(itemSlot.Item);//npc
+                    };
+                }
+                break;
+            case InventoryActionType.Buy:
+                {
+                    CharacterWallet wallet = opener.GetEntityComponent<CharacterWallet>();
+                    if (wallet == null)
+                        return;
+
+                    CharacterInventory openerInventory = opener.GetEntityComponent<CharacterInventory>();
+                    if(openerInventory == null) 
+                        return;
+
+                    text = "Buy";
+                    action = () =>
+                    {
+                        if (wallet.Money < itemSlot.Item.Info.Price)
+                            return;
+
+                        wallet.RemoveMoney(itemSlot.Item.Info.Price);
+
+                        inventory.RemoveItem(itemSlot.Item);//npc
+                        
+                        DrawInventory();
+
+                        if (itemSlot.Item.Count == 0)
+                        {
+                            itemDescriptor.Hide();
+                            itemSlot.Item.IncreaseCount();
+                        }
+                        
+                        openerInventory.AddItem(itemSlot.Item);//player
+                    };
                 }
                 break;
         }
 
-        Debug.Log(1);
         if (text == "" || action == null)
             return;
-        Debug.Log(2);
+        
         itemDescriptor.CreateActionButton(text, action);
     }
 }

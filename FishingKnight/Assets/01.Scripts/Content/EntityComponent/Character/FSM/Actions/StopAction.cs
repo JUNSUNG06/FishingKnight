@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class StopAction : FSMAction
 {
+    private CharacterMovement movement;
+    private EntityAnimation anim;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+        
+        movement = character.GetEntityComponent<CharacterMovement>();
+        anim = character.GetEntityComponent<EntityAnimation>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
 
-        character.Movement.Stop();
-        character.Anim.Animator.SetFloat("move_speed", 0f);
+        movement.Stop();
+        anim.Animator.SetFloat("move_speed", 0f);
     }
 }

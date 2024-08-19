@@ -4,27 +4,40 @@ using UnityEngine;
 
 public class FishingEndAction : FSMAction
 {
+    private EntityAnimation anim;
+    private CharacterFishing fishing;
+    private CharacterInventory inventory;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        anim = character.GetEntityComponent<EntityAnimation>();
+        fishing = character.GetEntityComponent<CharacterFishing>();
+        inventory = character.GetEntityComponent<CharacterInventory>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
 
-        character.Anim.Event.RegistEvent(AnimationEventType.End, CheckCatchedItem);
+        anim.Event.RegistEvent(AnimationEventType.End, CheckCatchedItem);
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        character.Anim.Event.UnregistEvent(AnimationEventType.End, CheckCatchedItem);
+        anim.Event.UnregistEvent(AnimationEventType.End, CheckCatchedItem);
     }
 
     private void CheckCatchedItem()
     {
-        Item item = character.Fishing.CurrentRob.StuckedItem;
+        Item item = fishing.CurrentRob.StuckedItem;
 
         if (item == null)
             return;
 
-        character.Inventory.AddItem(item);
+        inventory.AddItem(item);
     }
 }

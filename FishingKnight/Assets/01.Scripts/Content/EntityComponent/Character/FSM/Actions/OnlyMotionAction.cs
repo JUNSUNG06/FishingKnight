@@ -6,21 +6,32 @@ using UnityEngine;
 
 public class OnlyMotionAction : FSMAction
 {
+    private Collider characterCol;
+    private CharacterMovement movement;
+
+    public override void Initialize(Character character)
+    {
+        base.Initialize(character);
+
+        characterCol = character.GetComponent<Collider>();
+        movement = character.GetEntityComponent<CharacterMovement>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
 
-        character.Collider.enabled = false;
-        character.Movement.EnableGravity(false);
-        character.Movement.Stop();
+        characterCol.enabled = false;
+        movement.EnableGravity(false);
+        movement.Stop();
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        character.Collider.enabled = true;
-        character.Movement.EnableGravity(true);
-        character.Movement.Stop();
+        characterCol.enabled = true;
+        movement.EnableGravity(true);
+        movement.Stop();
     }
 }
