@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraManager
 {
@@ -29,8 +30,21 @@ public class CameraManager
         }
     }
 
+    private CinemachineVirtualCamera currentCamera;
+
+    private readonly int DefaultPriority = 0;
+    private readonly int FocusPriority = 10;
+
     public CameraManager()
     {
 
+    }
+
+    public void ChangeCamera(CinemachineVirtualCamera cam)
+    {
+        if(currentCamera != null)
+            currentCamera.Priority = DefaultPriority;
+        currentCamera = cam;
+        currentCamera.Priority = FocusPriority;
     }
 }
