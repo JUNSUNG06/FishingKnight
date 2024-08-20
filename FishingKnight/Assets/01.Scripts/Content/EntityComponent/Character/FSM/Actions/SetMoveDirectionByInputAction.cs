@@ -7,6 +7,9 @@ public class SetMoveDirectionByInputAction : FSMAction
 {
     [SerializeField] private PlayInputSO input;
 
+    [Space]
+    [SerializeField] private bool withCameraForward = true;
+
     private CharacterMovement movement;
 
     public override void Initialize(Character character)
@@ -36,6 +39,8 @@ public class SetMoveDirectionByInputAction : FSMAction
         {
             Vector2 input = context.ReadValue<Vector2>();
             Vector3 moveDir = new Vector3(input.x, 0, input.y);
+            if (withCameraForward)
+                moveDir = Manager.Camera.CameraForward * moveDir;
             movement.SetMoveDirection(moveDir);
         }
     }

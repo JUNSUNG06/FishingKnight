@@ -69,6 +69,7 @@ public class CharacterMovement : CharacterComponent
         {
             velocity = MoveDirection * MoveSpeed;
         }
+        velocity.y = rb.velocity.y;
 
         rb.velocity = velocity;
     }

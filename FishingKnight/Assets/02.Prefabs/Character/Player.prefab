@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
+  withCameraForward: 1
 --- !u!114 &5094727651766468614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2361,6 +2362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
+  withCameraForward: 1
 --- !u!114 &6426786556704876553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3862,6 +3864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: a3857cdb03b613e4bbbf09b7e3f53b8c, type: 2}
+  withCameraForward: 1
 --- !u!114 &3729667006684497055
 MonoBehaviour:
   m_ObjectHideFlags: 0
