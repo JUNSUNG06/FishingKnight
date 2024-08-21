@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   prefab: {fileID: 4220204978252049715, guid: 4ed4e6b9dbf0a7a458a721093510a189, type: 3}
-  icon: {fileID: 21300000, guid: 0f7b9143eb9c5d247afa5c71edbe37dd, type: 3}
-  itemImage: {fileID: 21300000, guid: 7109eb8b7f95644448434e7a0f486e7c, type: 3}
+  icon: {fileID: 21300000, guid: 54ad3480b289b7344b697fc848df3a43, type: 3}
+  itemImage: {fileID: 21300000, guid: 54ad3480b289b7344b697fc848df3a43, type: 3}
   itemName: Salmon
   description: Salmonmon
+  price: 0

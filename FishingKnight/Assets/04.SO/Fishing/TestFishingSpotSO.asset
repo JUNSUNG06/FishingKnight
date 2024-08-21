@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea796a90e83aaeb4eb347ac43d077159, type: 3}
-  m_Name: FishingSpotSO
+  m_Name: TestFishingSpotSO
   m_EditorClassIdentifier: 
   fishList:
   - {fileID: 11400000, guid: f8465ec56f8ba39419a32182dfb947ac, type: 2}
