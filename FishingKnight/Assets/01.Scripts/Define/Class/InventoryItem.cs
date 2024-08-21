@@ -21,6 +21,16 @@ public class InventoryItem : IEquatable<Item>, IEquatable<InventoryItem>
             isUnique = true;
     }
 
+    public InventoryItem(ItemSO info)
+    {
+        Info = info;
+
+        count = 1;
+
+        if (Info.ItemType == ItemType.Equipment)
+            isUnique = true;
+    }
+
     public void IncreaseCount()
     {
         count++;
