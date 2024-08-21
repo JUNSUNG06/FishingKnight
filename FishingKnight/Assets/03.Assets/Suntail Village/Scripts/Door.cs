@@ -8,7 +8,7 @@ namespace Suntail
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(AudioSource))]
-    public class Door : MonoBehaviour
+    public class Door : Entity, IInteract
     {
         [Tooltip("Door opening sound")]
         [SerializeField] private AudioClip openSound;
@@ -26,11 +26,16 @@ namespace Suntail
         private float _doorOpenTime;
         private bool _pauseInteraction;
 
-        private void Awake()
+        protected override void Start()
         {
             _doorAudioSource = gameObject.GetComponent<AudioSource>();
             _doorAnimator = gameObject.GetComponent<Animator>();
             _doorOpenTime = _doorAnimator.GetCurrentAnimatorStateInfo(0).length + doorDelayTime; //Sum of animation time and additional delay
+        }
+
+        public void Interact(Entity performer)
+        {
+            PlayDoorAnimation();
         }
 
         //Play an animation and sound, depending on door status
@@ -64,6 +69,5 @@ namespace Suntail
             yield return new WaitForSeconds(_doorOpenTime);
             _pauseInteraction = false;
         }
-
     }
 }

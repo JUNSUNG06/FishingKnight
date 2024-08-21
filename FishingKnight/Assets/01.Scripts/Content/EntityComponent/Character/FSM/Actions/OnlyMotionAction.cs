@@ -21,17 +21,19 @@ public class OnlyMotionAction : FSMAction
     {
         base.EnterState();
 
-        characterCol.enabled = false;
-        movement.EnableGravity(false);
-        movement.Stop();
+        if(characterCol != null)
+            characterCol.enabled = false;
+        movement?.EnableGravity(false);
+        movement?.Stop();
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        characterCol.enabled = true;
-        movement.EnableGravity(true);
-        movement.Stop();
+        if (characterCol != null)
+            characterCol.enabled = true;
+        movement?.EnableGravity(true);
+        movement?.Stop();
     }
 }

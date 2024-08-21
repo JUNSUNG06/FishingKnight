@@ -18,6 +18,7 @@ public class CameraManager
             return mainCamera;
         }
     }
+    private CinemachineBrain brain;
 
     public Quaternion CameraForward
     {
@@ -40,8 +41,12 @@ public class CameraManager
 
     }
 
-    public void ChangeCamera(CinemachineVirtualCamera cam)
+    public void ChangeCamera(CinemachineVirtualCamera cam, float time)
     {
+        if(brain == null)
+            brain = MainCamera.GetComponent<CinemachineBrain>();
+        brain.m_DefaultBlend.m_Time = time;
+
         if(currentCamera != null)
             currentCamera.Priority = DefaultPriority;
         currentCamera = cam;
