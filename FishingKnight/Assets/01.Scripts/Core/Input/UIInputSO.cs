@@ -20,4 +20,9 @@ public class UIInputSO : InputSO<UIInputActionType>, IUIActions
     {
         inputActions[UIInputActionType.Back]?.Invoke(context);
     }
+
+    public void OnSelect(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        inputActions[UIInputActionType.Select]?.Invoke(context);
+    }
 }

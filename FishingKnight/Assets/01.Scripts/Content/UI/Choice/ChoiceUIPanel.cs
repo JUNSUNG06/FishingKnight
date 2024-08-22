@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class ChoiceUIPanel : UIPanel
 {
-    public struct ChoiceActionButtonInfo
-    {
-        public string Text;
-        public Action Action;
-    }
-
     [SerializeField] private ActionButton actionbuttonPrefab;
     [SerializeField] private Transform buttonContainer;
 

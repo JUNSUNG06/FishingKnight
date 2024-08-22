@@ -13,25 +13,17 @@ public class LeaveTrigger : Trigger
         if (choiceUI == null)
             return;
 
-        choiceUI.SetActionButton(new ChoiceUIPanel.ChoiceActionButtonInfo[]
+        choiceUI.SetActionButton(new ChoiceActionButtonInfo[]
         {
-            new ChoiceUIPanel.ChoiceActionButtonInfo()
+            new ChoiceActionButtonInfo("Dungeon", () =>
             {
-                Text = "Dungeon",
-                Action = () =>
-                {
-                    Debug.Log("Go to dungeon");
-                }
-            },
-            new ChoiceUIPanel.ChoiceActionButtonInfo()
+                Debug.Log("Go to dungeon");
+            }),
+            new ChoiceActionButtonInfo("Quit", () =>
             {
-                Text = "Quit",
-                Action = () =>
-                {
-                    Manager.UI.HidePanel();
-                    Debug.Log("Quit");
-                }
-            },
+                Manager.UI.HidePanel();
+                Debug.Log("Quit");
+            }),
         });
         choiceUI.Show();
     }

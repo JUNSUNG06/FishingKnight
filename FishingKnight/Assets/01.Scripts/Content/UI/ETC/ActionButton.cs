@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ActionButton : UIObject
 {
     [SerializeField] private TextMeshProUGUI text;
-    private Button button;
+    protected Button button;
 
     public override void Initialize()
     {

@@ -1019,6 +1019,7 @@ GameObject:
   - component: {fileID: 2384879734429571371}
   - component: {fileID: 5519642185460922268}
   - component: {fileID: 3940278600061475539}
+  - component: {fileID: 933815503613820769}
   m_Layer: 11
   m_Name: StoreCharacter
   m_TagString: Untagged
@@ -1119,6 +1120,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultItems: []
+--- !u!114 &933815503613820769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432625120453386417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201886b2f5adbe942ae1f4f604566a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: 4af95e15a623c074b82a1fdf4224ab20, type: 2}
 --- !u!1 &4529563342934864801
 GameObject:
   m_ObjectHideFlags: 0

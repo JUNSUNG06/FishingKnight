@@ -7,7 +7,7 @@ public class UICanvas : UIObject
 {
     private Dictionary<Type, UIPanel> panels;
 
-    private void Start()
+    private void Awake()
     {
         Initialize();
     }

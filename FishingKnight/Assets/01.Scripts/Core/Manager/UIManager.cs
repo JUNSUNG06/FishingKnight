@@ -43,7 +43,7 @@ public class UIManager
         {
             InputManager.ChangeInputMap(InputMapType.UI);
             InputManager.GetInputSO<UIInputActionType>(InputMapType.UI)
-                .RegistAction(UIInputActionType.Back, HidePanelByInptu);
+                .RegistAction(UIInputActionType.Back, HidePanelByInput);
         }
     }
 
@@ -58,7 +58,7 @@ public class UIManager
         if (panelStack.Count == 0)
         {
             InputManager.GetInputSO<UIInputActionType>(InputMapType.UI)
-                .UnregistAction(UIInputActionType.Back, HidePanelByInptu);
+                .UnregistAction(UIInputActionType.Back, HidePanelByInput);
             InputManager.ChangeInputMap(InputMapType.Play);
         }
         else
@@ -67,9 +67,14 @@ public class UIManager
         }
     }
 
-    private void HidePanelByInptu(CallbackContext context)
+    private void HidePanelByInput(CallbackContext context)
     {
-        if (context.started)
-            HidePanel();
+        if (context.started == false)
+            return;
+
+        if (panelStack.Peek().CanHideByInput == false)
+            return;
+
+        HidePanel();
     }
 }

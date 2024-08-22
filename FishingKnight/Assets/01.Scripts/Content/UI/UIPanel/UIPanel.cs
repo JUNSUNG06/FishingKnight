@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UIPanel : UIObject
 {
+    public bool CanHideByInput;
+
     public override void Show()
     {
         base.Show();
