@@ -9,7 +9,7 @@ public class StoreCharacterDialogue : CharacterDialogue
     {
         base.Initialize(owner);
 
-        AddDialogueAction(new DialogueAction("Hi"));
+        AddDialogueAction(new DialogueAction("Do you need anything?", speakSpeed));
         AddDialogueAction(new DialogueAction(new ChoiceActionButtonInfo[]
         {
             new ChoiceActionButtonInfo("Sell", () =>
@@ -36,8 +36,9 @@ public class StoreCharacterDialogue : CharacterDialogue
             }),
             new ChoiceActionButtonInfo("Quit", () =>
             {
-                EndDialogue();
+                ShowDialogue();
             }),
         }));
+        AddDialogueAction(new DialogueAction("It was a good deal", speakSpeed));
     }
 }

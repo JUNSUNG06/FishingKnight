@@ -11,12 +11,17 @@ public class CharacterDialogue : CharacterComponent
     [Space]
     [SerializeField] private string speakerName;
 
+    [Space]
+    [SerializeField] protected float speakSpeed = 0.025f;
+
     private List<DialogueAction> dialogueActions;
     private int currentActionIndex;
 
     private DialogueUIPanel dialogueUIPanel;
 
     protected Entity dialoguePartner;
+
+    private bool isSuccessedPrevDialogue;
 
     public override void Initialize(Entity owner)
     {
@@ -51,7 +56,8 @@ public class CharacterDialogue : CharacterComponent
         
         dialoguePartner = partner;
 
-        currentActionIndex = -1;
+        isSuccessedPrevDialogue = false;
+        currentActionIndex = 0;
 
         dialogueUIPanel.SetSpeakerName(speakerName);
         dialogueUIPanel.Show();
@@ -60,18 +66,22 @@ public class CharacterDialogue : CharacterComponent
         input.RegistAction(UIInputActionType.Select, ShowDialogueByInput);
     }
 
-    private void ShowDialogue()
+    protected void ShowDialogue()
     {
-        Debug.Log("show");
+        if(isSuccessedPrevDialogue)
+            currentActionIndex++;
+
         if(currentActionIndex == dialogueActions.Count)
         {
-            //Debug.Log(currentActionIndex);
             EndDialogue();
 
             return;
         }
-        //Debug.Log($"curent Index : {currentActionIndex}");
-        dialogueUIPanel.ShowDialogue(dialogueActions[++currentActionIndex]);
+        
+        dialogueUIPanel.ShowDialogue(dialogueActions[currentActionIndex], (isSuccess) =>
+        {
+            isSuccessedPrevDialogue = isSuccess;
+        });
     }
 
     private void ShowDialogueByInput(CallbackContext context)

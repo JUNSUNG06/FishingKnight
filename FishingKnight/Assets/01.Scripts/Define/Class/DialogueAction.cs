@@ -11,13 +11,16 @@ public class DialogueAction
 
     private string text;
     public string Text => text;
+    private float doTextTime;
+    public float DoTextTime => doTextTime;
     private Action onTextShowAction;
     public Action OnTextShowAction => onTextShowAction;
 
-    public DialogueAction(string text, Action onTextShowAction = null)
+    public DialogueAction(string text, float doTextTime = 0.025f, Action onTextShowAction = null)
     {
         this.text = text;
         this.onTextShowAction = onTextShowAction;
+        this.doTextTime = doTextTime;
 
         actionType = DialogueActionType.Talk;
     }

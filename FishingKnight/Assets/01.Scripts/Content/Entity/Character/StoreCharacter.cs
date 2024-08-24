@@ -17,36 +17,5 @@ public class StoreCharacter : Character, IInteract
     public void Interact(Entity performer)
     {
         GetEntityComponent<CharacterDialogue>().StartDialogue(performer);
-        //ChoiceUIPanel panel = Manager.UI.MainCanvas.GetPanel<ChoiceUIPanel>();
-        //panel.SetActionButton(new ChoiceActionButtonInfo[]
-        //{
-        //    new ChoiceActionButtonInfo("Sell", () =>
-        //    {
-        //        CharacterInventory showInventory = performer.GetEntityComponent<CharacterInventory>();
-        //            if(showInventory == null)
-        //                return;
-
-        //            InventoryUIPanel inventoryUI = Manager.UI.MainCanvas.GetPanel<InventoryUIPanel>();
-        //            inventoryUI.SetInventory(this, showInventory);
-        //            inventoryUI.SetInventoryAction(InventoryActionType.Sell);
-        //            inventoryUI.Show();
-        //    }),
-        //    new ChoiceActionButtonInfo("Buy", () =>
-        //    {
-        //        CharacterInventory showInventory = GetEntityComponent<CharacterInventory>();
-        //        if(showInventory == null)
-        //            return;
-
-        //        InventoryUIPanel inventoryUI = Manager.UI.MainCanvas.GetPanel<InventoryUIPanel>();
-        //        inventoryUI.SetInventory(performer, showInventory);
-        //        inventoryUI.SetInventoryAction(InventoryActionType.Buy);
-        //        inventoryUI.Show();
-        //    }),
-        //    new ChoiceActionButtonInfo("Quit", () =>
-        //    {
-        //        Manager.UI.HidePanel();
-        //    }),
-        //});
-        //panel.Show();
     }
 }
