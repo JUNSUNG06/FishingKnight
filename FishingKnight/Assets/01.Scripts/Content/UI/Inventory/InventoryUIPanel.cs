@@ -161,10 +161,11 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
                         if (itemSlot.Item.Count == 0)
                         {
                             itemDescriptor.Hide();
-                            itemSlot.Item.IncreaseCount();
+                            //itemSlot.Item.IncreaseCount();
                         }
-                        
-                        openerInventory.AddItem(itemSlot.Item);//npc
+
+                        InventoryItem sellItem = new InventoryItem(itemSlot.Item.Info);
+                        openerInventory.AddItem(sellItem);//npc
                     };
                 }
                 break;
@@ -193,10 +194,11 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
                         if (itemSlot.Item.Count == 0)
                         {
                             itemDescriptor.Hide();
-                            itemSlot.Item.IncreaseCount();
+                            //itemSlot.Item.IncreaseCount();
                         }
-                        
-                        openerInventory.AddItem(itemSlot.Item);//player
+
+                        InventoryItem buyItem = new InventoryItem(itemSlot.Item.Info);
+                        openerInventory.AddItem(buyItem);//player
                     };
                 }
                 break;
