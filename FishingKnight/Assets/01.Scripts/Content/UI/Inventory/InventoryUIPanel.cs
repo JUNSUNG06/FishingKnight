@@ -20,6 +20,9 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
     [Space]
     [SerializeField] private ItemDescriptor itemDescriptor;
 
+    [Space]
+    [SerializeField] private MoneyText moneyText;
+
     private InventoryActionType[] actions;
 
     public void SetInventory(Entity opener, CharacterInventory inventory)
@@ -36,6 +39,12 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
         DrawInventory();
 
         itemDescriptor.Hide();
+
+        CharacterWallet wallet = inventory.Character.GetEntityComponent<CharacterWallet>();
+        if (wallet != null)
+        {
+            moneyText.SetMoney(wallet.Money);
+        }
     }
 
     public void DrawNextItems()
@@ -153,6 +162,7 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
                     action = () =>
                     {
                         wallet.AddMoeny(itemSlot.Item.Info.Price);
+                        moneyText.SetMoney(wallet.Money);
                         
                         inventory.RemoveItem(itemSlot.Item);//player
                         
@@ -186,6 +196,7 @@ public class InventoryUIPanel : UIPanel, IPointerClickHandler
                             return;
 
                         wallet.RemoveMoney(itemSlot.Item.Info.Price);
+                        moneyText.SetMoney(wallet.Money);
 
                         inventory.RemoveItem(itemSlot.Item);//npc
                         
