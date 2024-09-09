@@ -12,18 +12,18 @@ public class FishingChair : Chair
     public override void Interact(Entity performer)
     {
         base.Interact(performer);
-
+        
         if (interacter == null)
             return;
-
+        
         CharacterHolder holder = interacter.GetEntityComponent<CharacterHolder>();
         if (holder == null)
             return;
-
+        
         CharacterFishing fishing = interacter.GetComponent<CharacterFishing>();
         if (fishing == null)
             return;
-
+        
         if (holder.TryGetHoldingObject((h) =>
         {
             if (h == null)
@@ -37,7 +37,7 @@ public class FishingChair : Chair
             return false;
         }, out IHold holdingObject) == false)
             return;
-
+        
         fishing.SetFishingSpot(fishingSpot);
         fishing.SetFishingRob(holdingObject.Body.GetComponent<FishingRob>());
 
@@ -55,6 +55,8 @@ public class FishingChair : Chair
 
     private void ChangeState()
     {
+        performerFSM.SetNextState("FishingStart");
+
         performerAnim.Event.UnregistEvent(AnimationEventType.End, ChangeState);
     }
 }

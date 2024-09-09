@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: TestFishingSpotSO
   m_EditorClassIdentifier: 
   fishList:
+  - {fileID: 11400000, guid: d47d1fb208e982b4190cddffb8d2944e, type: 2}
+  - {fileID: 11400000, guid: c7e3ee74ba563d64e8ee311dcf321920, type: 2}
+  - {fileID: 11400000, guid: 0ef47cb3c0b8b494fb3e97c7ee9b108a, type: 2}
   - {fileID: 11400000, guid: f8465ec56f8ba39419a32182dfb947ac, type: 2}

@@ -15,5 +15,5 @@ public class PawnSO : ScriptableObject
     public int Price => price;
     public string Description => description;
     public Sprite Image => image;
-    public Character Prefab => prefab;
+    public Pawn Prefab => prefab;
 }

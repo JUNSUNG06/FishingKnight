@@ -11,7 +11,10 @@ public class HexGridLayout : MonoBehaviour
     public float outerSize = 1f;
     public float height = 1f;
     public bool isFlatTopped;
+    public Vector2 padding;
     public Material material;
+
+    private HexGrid[,] grids;
 
     private void OnEnable()
     {
@@ -26,18 +29,17 @@ public class HexGridLayout : MonoBehaviour
         }
     }
 
-    public void LayoutGrid()
+    private void LayoutGrid()
     {
-        for(int i = transform.childCount - 1; i >= 0; i--)
-        {
-            Destroy(transform.GetChild(i).gameObject);
-        }
+        transform.ClearChild();
 
-        for(int y = 0; y < gridSize.y; y++)
+        grids = new HexGrid[gridSize.y, gridSize.x];
+
+        for (int y = 0; y < gridSize.y; y++)
         {
             for(int x = 0; x < gridSize.x; x++)
             {
-                GameObject tile = new GameObject($"Hex({x}, {y})", typeof(HexRenderer));
+                GameObject tile = new GameObject($"Hex({x}, {y})", typeof(HexRenderer), typeof(HexGrid));
 
                 HexRenderer hexRenderer = tile.GetComponent<HexRenderer>();
                 hexRenderer.innerSize = innerSize;
@@ -49,6 +51,8 @@ public class HexGridLayout : MonoBehaviour
 
                 tile.transform.SetParent(transform);
                 tile.transform.localPosition = GetPositionForHexFromCoordinate(new Vector2Int(x, y));
+
+                grids[y, x] = tile.GetComponent<HexGrid>();
             }
         }
     }
@@ -96,6 +100,33 @@ public class HexGridLayout : MonoBehaviour
             yPosition = row * verticalDistance - offset;
         }
 
-        return new Vector3(xPosition, 0, -yPosition);
+        return new Vector3(xPosition + padding.x * coordinate.x, 0, -yPosition + padding.y * coordinate.y);
+    }
+    private Vector2Int GetHexGridIndexByPosition(Vector3 position)
+    {
+        Vector2Int result = Vector2Int.zero;
+
+        return result;
+    }
+
+    public HexGrid GetHexGridByPosition(Vector3 position)
+    {
+        Vector2Int index = GetHexGridIndexByPosition(position);
+
+        return grids[index.y, index.x];
+    }
+
+    public HexGrid GetUseableHexGrid()
+    {
+        for(int y = 0; y < gridSize.y; y++)
+        {
+            for (int x = 0; x < gridSize.x; x++)
+            {
+                if (grids[y, x].StandingPawn == null)
+                    return grids[y, x];
+            }
+        }
+
+        return null;
     }
 }

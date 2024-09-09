@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: fe45a4731de121444abcd2ffa82ebaad, type: 3}
   m_Name: KnightPawn
   m_EditorClassIdentifier: Assembly-CSharp::PawnSO
-  prefab: {fileID: 0}
+  prefab: {fileID: 4637028699771867977, guid: c84e4ce86e0118a46a4aae7e5a473fbd, type: 3}
   pawnName: Knight
   price: 1000
-  image: {fileID: 21300000, guid: a78bcef87ec9f476fb0f83193e7115ac, type: 3}
-  description: knight pawn
+  image: {fileID: 21300000, guid: 0a2d0bb669833401daab037dc03e1e83, type: 3}
+  description: kinght pawn

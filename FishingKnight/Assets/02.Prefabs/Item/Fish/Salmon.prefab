@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1943099388856638338
+--- !u!1 &6347118721982614717
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1548842797824828317}
-  - component: {fileID: 2965127373666318607}
-  - component: {fileID: 898266827766668147}
-  - component: {fileID: 3913480943693139816}
-  - component: {fileID: 4220204978252049715}
+  - component: {fileID: 5200472715156245970}
+  - component: {fileID: 7057011844529145542}
+  - component: {fileID: 2165384221067125303}
+  - component: {fileID: 8022069898737525067}
+  - component: {fileID: 901966447241008777}
   m_Layer: 0
   m_Name: Salmon
   m_TagString: Untagged
@@ -20,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1548842797824828317
+--- !u!4 &5200472715156245970
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943099388856638338}
+  m_GameObject: {fileID: 6347118721982614717}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -35,21 +35,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2965127373666318607
+--- !u!33 &7057011844529145542
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943099388856638338}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &898266827766668147
+  m_GameObject: {fileID: 6347118721982614717}
+  m_Mesh: {fileID: -5414332994079535143, guid: 38f74cd884cda8242b4fdc167c4962f8, type: 3}
+--- !u!23 &2165384221067125303
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943099388856638338}
+  m_GameObject: {fileID: 6347118721982614717}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 284830dd46ce77c4696ef63853c7cf5e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3913480943693139816
-BoxCollider:
+--- !u!64 &8022069898737525067
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943099388856638338}
+  m_GameObject: {fileID: 6347118721982614717}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -103,19 +103,32 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4220204978252049715
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5414332994079535143, guid: 38f74cd884cda8242b4fdc167c4962f8, type: 3}
+--- !u!114 &901966447241008777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943099388856638338}
+  m_GameObject: {fileID: 6347118721982614717}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e4c08240ed809f46afaa1a9864e5296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStartFocusEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndFocusEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
   info: {fileID: 11400000, guid: f8465ec56f8ba39419a32182dfb947ac, type: 2}
