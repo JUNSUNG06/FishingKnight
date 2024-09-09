@@ -1,11 +1,20 @@
-public static class Manager
-{
-    public static UIManager UI { get; private set; }
-    public static CameraManager Camera { get; private set; }
+using UnityEngine;
 
-    static Manager()
+public class Manager : MonoBehaviour
+{
+    private static Manager instance;
+    public static Manager Instance => instance;
+
+    public UIManager UI { get; private set; }
+    public CameraManager Camera { get; private set; }
+    public AreaManager Area { get; private set; }
+
+    private void Awake()
     {
-        UI = new UIManager();
-        Camera = new CameraManager();
+        instance = this;
+
+        UI = gameObject.AddComponent<UIManager>();
+        Camera = gameObject.AddComponent<CameraManager>();
+        Area = gameObject.AddComponent<AreaManager>();
     }
 }

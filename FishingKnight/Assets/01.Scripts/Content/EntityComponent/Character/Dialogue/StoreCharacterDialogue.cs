@@ -18,7 +18,7 @@ public class StoreCharacterDialogue : CharacterDialogue
                 if(showInventory == null)
                     return;
 
-                InventoryUIPanel inventoryUI = Manager.UI.MainCanvas.GetPanel<InventoryUIPanel>();
+                InventoryUIPanel inventoryUI = Manager.Instance.UI.MainCanvas.GetPanel<InventoryUIPanel>();
                 inventoryUI.SetInventory(owner, showInventory);
                 inventoryUI.SetInventoryAction(InventoryActionType.Sell);
                 inventoryUI.Show();
@@ -29,7 +29,7 @@ public class StoreCharacterDialogue : CharacterDialogue
                 if(showInventory == null)
                     return;
 
-                InventoryUIPanel inventoryUI = Manager.UI.MainCanvas.GetPanel<InventoryUIPanel>();
+                InventoryUIPanel inventoryUI = Manager.Instance.UI.MainCanvas.GetPanel<InventoryUIPanel>();
                 inventoryUI.SetInventory(dialoguePartner, showInventory);
                 inventoryUI.SetInventoryAction(InventoryActionType.Buy);
                 inventoryUI.Show();

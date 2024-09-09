@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
-public class UIManager
+public class UIManager : MonoBehaviour
 {
     private UICanvas mainCanvas;
     public UICanvas MainCanvas

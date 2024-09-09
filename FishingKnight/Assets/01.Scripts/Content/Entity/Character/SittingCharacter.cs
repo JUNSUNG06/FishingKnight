@@ -18,4 +18,14 @@ public class SittingCharacter : Character, IInteract
     {
         GetEntityComponent<CharacterDialogue>().StartDialogue(performer);
     }
+
+    public Entity GetEntity()
+    {
+        return this;
+    }
+
+    public void UnInteract(Entity performer)
+    {
+        
+    }
 }

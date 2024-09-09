@@ -38,7 +38,7 @@ public class OpenUIByInputAction : FSMAction
     {
         if(context.started)
         {
-            InventoryUIPanel ui = Manager.UI.MainCanvas.GetPanel<InventoryUIPanel>();
+            InventoryUIPanel ui = Manager.Instance.UI.MainCanvas.GetPanel<InventoryUIPanel>();
             
             ui.SetInventory(character, inventory);
             ui.SetInventoryAction(InventoryActionType.Hold, InventoryActionType.Remove);
@@ -50,7 +50,7 @@ public class OpenUIByInputAction : FSMAction
     {
         if (context.started)
         {
-            HoldItemUIPanel ui = Manager.UI.MainCanvas.GetPanel<HoldItemUIPanel>();
+            HoldItemUIPanel ui = Manager.Instance.UI.MainCanvas.GetPanel<HoldItemUIPanel>();
 
             ui.SetHolder(holder);
             ui.Show();

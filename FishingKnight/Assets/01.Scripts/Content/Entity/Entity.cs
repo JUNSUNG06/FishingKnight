@@ -9,16 +9,18 @@ public class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
+        
+    }
+
+    protected virtual void Start()
+    {
         comps = new List<EntityComponent>();
         GetComponents<EntityComponent>(comps);
         foreach (EntityComponent comp in comps)
         {
             comp.Initialize(this);
         }
-    }
 
-    protected virtual void Start()
-    {
         foreach (EntityComponent comp in comps)
         {
             comp.PostInitialize();

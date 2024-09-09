@@ -9,7 +9,7 @@ public class LeaveTrigger : Trigger
         if (other.CompareTag("Player") == false)
             return;
 
-        ChoiceUIPanel choiceUI = Manager.UI.MainCanvas.GetPanel<ChoiceUIPanel>();
+        ChoiceUIPanel choiceUI = Manager.Instance.UI.MainCanvas.GetPanel<ChoiceUIPanel>();
         if (choiceUI == null)
             return;
 
@@ -21,7 +21,7 @@ public class LeaveTrigger : Trigger
             }),
             new ChoiceActionButtonInfo("Quit", () =>
             {
-                Manager.UI.HidePanel();
+                Manager.Instance.UI.HidePanel();
                 Debug.Log("Quit");
             }),
         });

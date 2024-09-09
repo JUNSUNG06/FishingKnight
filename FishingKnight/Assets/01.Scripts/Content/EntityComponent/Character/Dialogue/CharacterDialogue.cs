@@ -41,7 +41,7 @@ public class CharacterDialogue : CharacterComponent
 
     protected virtual void SetDialogueUIPanel()
     {
-        dialogueUIPanel = Manager.UI.MainCanvas.GetPanel<DialogueUIPanel>();
+        dialogueUIPanel = Manager.Instance.UI.MainCanvas.GetPanel<DialogueUIPanel>();
     }
 
     protected void AddDialogueAction(DialogueAction dialogueAction)
@@ -98,6 +98,6 @@ public class CharacterDialogue : CharacterComponent
     protected void EndDialogue()
     {
         input.UnregistAction(UIInputActionType.Select, ShowDialogueByInput);
-        Manager.UI.HidePanel();
+        Manager.Instance.UI.HidePanel();
     }
 }

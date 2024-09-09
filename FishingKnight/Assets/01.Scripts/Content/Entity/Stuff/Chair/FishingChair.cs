@@ -55,8 +55,6 @@ public class FishingChair : Chair
 
     private void ChangeState()
     {
-        performerFSM.SetNextState("FishingStart");
-
         performerAnim.Event.UnregistEvent(AnimationEventType.End, ChangeState);
     }
 }

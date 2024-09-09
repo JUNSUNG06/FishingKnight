@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class CharacterWallet : CharacterComponent
 {
+    [SerializeField] private int initMoney;
     private int money;
+
     public int Money => money;
 
     public override void Initialize(Entity owner)
     {
         base.Initialize(owner);
 
-        money = 0;
+        money = initMoney;
     }
 
     public void AddMoeny(int amount)

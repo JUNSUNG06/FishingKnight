@@ -8,7 +8,7 @@ namespace Suntail
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(AudioSource))]
-    public class Door : Entity, IInteract
+    public class Door : Stuff
     {
         [Tooltip("Door opening sound")]
         [SerializeField] private AudioClip openSound;
@@ -28,13 +28,17 @@ namespace Suntail
 
         protected override void Start()
         {
+            base.Start();
+
             _doorAudioSource = gameObject.GetComponent<AudioSource>();
             _doorAnimator = gameObject.GetComponent<Animator>();
             _doorOpenTime = _doorAnimator.GetCurrentAnimatorStateInfo(0).length + doorDelayTime; //Sum of animation time and additional delay
         }
 
-        public void Interact(Entity performer)
+        public override void Interact(Entity performer)
         {
+            base.Interact(performer);
+
             PlayDoorAnimation();
         }
 

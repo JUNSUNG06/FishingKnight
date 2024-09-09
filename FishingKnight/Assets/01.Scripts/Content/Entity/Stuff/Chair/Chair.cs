@@ -1,9 +1,11 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Chair : Stuff
 {
+    [Space]
     [SerializeField] protected Transform sitPoint;
 
     protected Character interacter;

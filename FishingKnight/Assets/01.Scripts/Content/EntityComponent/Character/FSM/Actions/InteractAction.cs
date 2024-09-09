@@ -23,13 +23,6 @@ public class InteractAction : FSMAction
         input.RegistAction(PlayInputActionType.Interact, Interact);
     }
 
-    public override void UpdateState()
-    {
-        base.UpdateState();
-
-        interact.FindObject();
-    }
-
     public override void ExitState()
     {
         base.ExitState();

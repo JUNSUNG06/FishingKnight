@@ -40,7 +40,7 @@ public class SetMoveDirectionByInputAction : FSMAction
             Vector2 input = context.ReadValue<Vector2>();
             Vector3 moveDir = new Vector3(input.x, 0, input.y);
             if (withCameraForward)
-                moveDir = Manager.Camera.CameraForward * moveDir;
+                moveDir = Manager.Instance.Camera.CameraForward * moveDir;
             movement.SetMoveDirection(moveDir);
         }
     }
