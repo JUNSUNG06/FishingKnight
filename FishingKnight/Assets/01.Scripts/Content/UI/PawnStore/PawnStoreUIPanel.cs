@@ -71,7 +71,7 @@ public class PawnStoreUIPanel : UIPanel
             moneyText.SetMoney(wallet.Money);
 
             pawnSOList.Remove(info);
-            //add pawnso to player
+            Manager.Instance.Player.Player.AddHoldingPawn(info);
 
             CreateSlot();
 

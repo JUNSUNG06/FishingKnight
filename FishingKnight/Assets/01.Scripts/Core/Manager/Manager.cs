@@ -8,6 +8,7 @@ public class Manager : MonoBehaviour
     public UIManager UI { get; private set; }
     public CameraManager Camera { get; private set; }
     public AreaManager Area { get; private set; }
+    public PlayerManager Player { get; private set; }
 
     private void Awake()
     {
@@ -16,5 +17,6 @@ public class Manager : MonoBehaviour
         UI = gameObject.AddComponent<UIManager>();
         Camera = gameObject.AddComponent<CameraManager>();
         Area = gameObject.AddComponent<AreaManager>();
+        Player = gameObject.AddComponent<PlayerManager>();
     }
 }
