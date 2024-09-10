@@ -14,6 +14,13 @@ public class HexGridLayout : MonoBehaviour
     public Vector2 padding;
     public Material material;
 
+    [Space]
+    [SerializeField] private float focusedPower;
+    [ColorUsage(true, true)][SerializeField] private Color focusedColor;
+    [SerializeField] private float unFocusedPower;
+    [ColorUsage(true, true)][SerializeField] private Color unFocusedColor;
+    [SerializeField] private float transTime;
+
     private HexGrid[,] grids;
 
     private void OnEnable()
@@ -39,20 +46,28 @@ public class HexGridLayout : MonoBehaviour
         {
             for(int x = 0; x < gridSize.x; x++)
             {
-                GameObject tile = new GameObject($"Hex({x}, {y})", typeof(HexRenderer), typeof(HexGrid));
+                GameObject tile = new GameObject($"Hex({x}, {y})", typeof(HexRenderer));
+                tile.tag = "HexGrid";
 
                 HexRenderer hexRenderer = tile.GetComponent<HexRenderer>();
                 hexRenderer.innerSize = innerSize;
                 hexRenderer.outerSize = outerSize;
                 hexRenderer.height = height;
                 hexRenderer.isFlatTopped = isFlatTopped;
-                hexRenderer.SetMaterial(material);
+                hexRenderer.focusedColor = focusedColor;
+                hexRenderer.focusedPower = focusedPower;
+                hexRenderer.unFocusedColor = unFocusedColor;
+                hexRenderer.unFocusedPower = unFocusedPower;
+                hexRenderer.transTime = transTime;
+                hexRenderer.SetMaterial(new Material(material));
                 hexRenderer.DrawMesh();
 
                 tile.transform.SetParent(transform);
                 tile.transform.localPosition = GetPositionForHexFromCoordinate(new Vector2Int(x, y));
 
-                grids[y, x] = tile.GetComponent<HexGrid>();
+                HexGrid grid = tile.AddComponent<HexGrid>();
+                grid.render = hexRenderer;
+                grids[y, x] = grid;
             }
         }
     }
@@ -122,7 +137,7 @@ public class HexGridLayout : MonoBehaviour
         {
             for (int x = 0; x < gridSize.x; x++)
             {
-                if (grids[y, x].StandingPawn == null)
+                if (grids[y, x].ArrangementObject == null)
                     return grids[y, x];
             }
         }

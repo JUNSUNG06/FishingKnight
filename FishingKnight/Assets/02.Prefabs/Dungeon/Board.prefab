@@ -45,12 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 5, y: 1}
-  innerSize: 1
+  innerSize: 0
   outerSize: 1.2
   height: 0.2
   isFlatTopped: 0
   padding: {x: 1, y: 0}
-  material: {fileID: 2100000, guid: c6cc8020e3248a146aa0da0f8d92c0b1, type: 2}
+  material: {fileID: 2100000, guid: 49b6660e75a0eda40ae8743c26d9585b, type: 2}
+  focusedPower: 0
+  focusedColor: {r: 0.36078432, g: 1.2784314, b: 1.4980392, a: 1}
+  focusedIntensity: 2
+  unFocusedPower: 1
+  unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
+  unFocusedIntensity: 2
+  transTime: 0.3
 --- !u!1 &6215415552893571234
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,9 +258,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 8, y: 7}
-  innerSize: 1
+  innerSize: 0
   outerSize: 1.2
   height: 0.2
   isFlatTopped: 0
   padding: {x: 0, y: 0}
-  material: {fileID: 2100000, guid: c6cc8020e3248a146aa0da0f8d92c0b1, type: 2}
+  material: {fileID: 2100000, guid: 49b6660e75a0eda40ae8743c26d9585b, type: 2}
+  focusedPower: 0
+  focusedColor: {r: 0.36078432, g: 1.2784314, b: 1.4980392, a: 1}
+  focusedIntensity: 2
+  unFocusedPower: 1
+  unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
+  unFocusedIntensity: 2
+  transTime: 0.3

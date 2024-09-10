@@ -35,8 +35,11 @@ public class Dungeon : MonoBehaviour
 
     public void SpawnPawn(PawnSO info)
     {
-        Pawn pawn = Instantiate(info.Prefab, transform);
+        HexGrid useableGrid = currentBoard.PawnQueueGridLayout.GetUseableHexGrid();
+        if (useableGrid == null)
+            return;
 
-        currentBoard.PawnQueueGridLayout.GetUseableHexGrid().SetPawn(pawn);
+        Pawn pawn = Instantiate(info.Prefab, transform);
+        useableGrid.Arrangement(pawn);
     }
 }

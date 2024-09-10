@@ -80,6 +80,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ce0dbe6-e136-45c7-8e1d-4ffc776e97e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""OpenHoldItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0197ef9c-a1ce-4615-a2dd-549aec92723b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -271,6 +291,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Play_Cancel = m_Play.FindAction("Cancel", throwIfNotFound: true);
         m_Play_OpenInventory = m_Play.FindAction("OpenInventory", throwIfNotFound: true);
         m_Play_OpenHoldItem = m_Play.FindAction("OpenHoldItem", throwIfNotFound: true);
+        m_Play_LeftMouse = m_Play.FindAction("LeftMouse", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
@@ -342,6 +363,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Play_Cancel;
     private readonly InputAction m_Play_OpenInventory;
     private readonly InputAction m_Play_OpenHoldItem;
+    private readonly InputAction m_Play_LeftMouse;
     public struct PlayActions
     {
         private @Controls m_Wrapper;
@@ -352,6 +374,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Cancel => m_Wrapper.m_Play_Cancel;
         public InputAction @OpenInventory => m_Wrapper.m_Play_OpenInventory;
         public InputAction @OpenHoldItem => m_Wrapper.m_Play_OpenHoldItem;
+        public InputAction @LeftMouse => m_Wrapper.m_Play_LeftMouse;
         public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -379,6 +402,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @OpenHoldItem.started += instance.OnOpenHoldItem;
             @OpenHoldItem.performed += instance.OnOpenHoldItem;
             @OpenHoldItem.canceled += instance.OnOpenHoldItem;
+            @LeftMouse.started += instance.OnLeftMouse;
+            @LeftMouse.performed += instance.OnLeftMouse;
+            @LeftMouse.canceled += instance.OnLeftMouse;
         }
 
         private void UnregisterCallbacks(IPlayActions instance)
@@ -401,6 +427,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @OpenHoldItem.started -= instance.OnOpenHoldItem;
             @OpenHoldItem.performed -= instance.OnOpenHoldItem;
             @OpenHoldItem.canceled -= instance.OnOpenHoldItem;
+            @LeftMouse.started -= instance.OnLeftMouse;
+            @LeftMouse.performed -= instance.OnLeftMouse;
+            @LeftMouse.canceled -= instance.OnLeftMouse;
         }
 
         public void RemoveCallbacks(IPlayActions instance)
@@ -489,6 +518,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnCancel(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnOpenHoldItem(InputAction.CallbackContext context);
+        void OnLeftMouse(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

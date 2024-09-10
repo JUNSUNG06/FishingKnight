@@ -6,4 +6,5 @@ public enum PlayInputActionType
     Cancel,
     OpenInventory,
     OpenHoldItem,
+    LeftMouse,
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -33,6 +34,13 @@ public class HexRenderer : MonoBehaviour
     public float outerSize;
     public float height;
     public bool isFlatTopped;
+
+    [Space]
+    public float focusedPower;
+    [ColorUsage(true, true)] public Color focusedColor;
+    public float unFocusedPower;
+    [ColorUsage(true, true)] public Color unFocusedColor;
+    public float transTime;
 
     private void Awake()
     {
@@ -145,5 +153,20 @@ public class HexRenderer : MonoBehaviour
     {
         this.material = material;
         meshRenderer.material = material;
+
+        this.material.DOFloat(unFocusedPower, "_FresnelPower", 0f);
+        this.material.DOColor(unFocusedColor, 0f);
+    }
+
+    public void OnFocus()
+    {
+        material.DOFloat(focusedPower, "_FresnelPower", transTime);
+        material.DOColor(focusedColor, transTime);
+    }
+
+    public void OnUnFocus()
+    {
+        material.DOFloat(unFocusedPower, "_FresnelPower", transTime);
+        material.DOColor(unFocusedColor, transTime);
     }
 }

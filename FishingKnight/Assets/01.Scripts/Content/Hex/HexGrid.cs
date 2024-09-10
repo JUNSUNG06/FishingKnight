@@ -2,14 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HexGrid : MonoBehaviour
+[RequireComponent(typeof(MeshCollider))]
+public class HexGrid : MonoBehaviour, IFocus
 {
-    private Pawn standingPawn;
-    public Pawn StandingPawn => standingPawn;
+    private IArrangement arrangementObject;
+    public IArrangement ArrangementObject => arrangementObject;
 
-    public void SetPawn(Pawn pawn)
+    public HexRenderer render;
+
+    public void StartFocus(Entity performer)
     {
-        standingPawn = pawn;
-        pawn.transform.position = transform.position;
+        render.OnFocus();
+    }
+
+    public void EndFocus(Entity performer)
+    {
+        render.OnUnFocus();
+    }
+
+    public Entity GetEntity()
+    {
+        return null;
+    }
+
+    public void Arrangement(IArrangement arrangementObject)
+    {
+        this.arrangementObject = arrangementObject;
+        arrangementObject.GetTransform().position = transform.position;
+        arrangementObject.OnArrangement(this);
+    }
+
+    public IArrangement UnArrangement()
+    {
+        IArrangement arrangement = arrangementObject;
+        arrangementObject = null;
+
+        return arrangement;
     }
 }

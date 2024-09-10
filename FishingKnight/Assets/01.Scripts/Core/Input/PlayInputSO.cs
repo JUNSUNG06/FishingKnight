@@ -46,4 +46,9 @@ public class PlayInputSO : InputSO<PlayInputActionType>, IPlayActions
     {
         inputActions[PlayInputActionType.OpenHoldItem]?.Invoke(context);
     }
+
+    public void OnLeftMouse(InputAction.CallbackContext context)
+    {
+        inputActions[PlayInputActionType.LeftMouse]?.Invoke(context);
+    }
 }
