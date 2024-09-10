@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7bcaf887749f3428c4ac9d5eabe046, type: 3}
   m_Name: TestDungeonBoardSO
   m_EditorClassIdentifier: 
+  monsterPawnArrangeInfoList:
+  - x: 8
+    y: 0
+    pawnSO: {fileID: 11400000, guid: 170eac78bcaf6b34faccf87d0d99f777, type: 2}
+  - x: 0
+    y: 0
+    pawnSO: {fileID: 11400000, guid: 170eac78bcaf6b34faccf87d0d99f777, type: 2}

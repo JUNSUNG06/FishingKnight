@@ -137,6 +137,12 @@ public class DungeonPlayer : MonoBehaviour
             return;
         }
 
+        if(currentGrid.arrangeType != PawnType.Player)
+        {
+            FailDrag();
+            return;
+        }
+
         SuccessDrag();
     }
 

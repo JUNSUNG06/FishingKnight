@@ -10,6 +10,9 @@ public class HexGrid : MonoBehaviour, IFocus
 
     public HexRenderer render;
 
+    [Space]
+    public PawnType arrangeType;
+
     public void StartFocus(Entity performer)
     {
         render.OnFocus();

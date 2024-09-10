@@ -56,6 +56,64 @@ MonoBehaviour:
   unFocusedPower: 1
   unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
   transTime: 0.3
+  arrangeType: 0
+--- !u!1 &3672271997708793181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4823643369641199959}
+  - component: {fileID: 355493037527682005}
+  m_Layer: 12
+  m_Name: MonsterBoardHexGridLayout
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4823643369641199959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672271997708793181}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.8, y: 0.45, z: 9.54}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6656833885204443978}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &355493037527682005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672271997708793181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd6fddfbc7ce0a40b94a3f52e406823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: {x: 8, y: 4}
+  innerSize: 0
+  outerSize: 1.2
+  height: 0.2
+  isFlatTopped: 0
+  padding: {x: 0, y: 0}
+  material: {fileID: 2100000, guid: 49b6660e75a0eda40ae8743c26d9585b, type: 2}
+  focusedPower: 0
+  focusedColor: {r: 0.36078432, g: 1.2784314, b: 1.4980392, a: 1}
+  unFocusedPower: 1
+  unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
+  transTime: 0.3
+  arrangeType: 1
 --- !u!1 &6215415552893571234
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +143,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.61}
-  m_LocalScale: {x: 18, y: 1, z: 18}
+  m_LocalScale: {x: 19, y: 1, z: 19}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6656833885204443978}
@@ -194,6 +252,7 @@ Transform:
   - {fileID: 8906625582424352427}
   - {fileID: 1079432481768985776}
   - {fileID: 6821254808423329970}
+  - {fileID: 4823643369641199959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6128819237980703947
@@ -211,6 +270,7 @@ MonoBehaviour:
   pawnSlotUIPanel: {fileID: 0}
   pawnQueueGridLayout: {fileID: 453729386091894394}
   boardGridLayout: {fileID: 1899594567676368496}
+  monsterBoardGridLayout: {fileID: 355493037527682005}
 --- !u!1 &6582694968655634365
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +282,7 @@ GameObject:
   - component: {fileID: 6821254808423329970}
   - component: {fileID: 1899594567676368496}
   m_Layer: 12
-  m_Name: BoardHexGridLayout
+  m_Name: PlayerBoardHexGridLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,3 +327,4 @@ MonoBehaviour:
   unFocusedPower: 1
   unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
   transTime: 0.3
+  arrangeType: 0

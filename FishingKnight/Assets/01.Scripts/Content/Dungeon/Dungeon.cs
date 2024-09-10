@@ -19,6 +19,7 @@ public class Dungeon : MonoBehaviour
     {
         currentBoardIndex = 0;
         currentBoard = Instantiate(dungeonSO.BoardPrefab, transform);
+        currentBoard.Init();
         currentBoard.SetBoardSo(dungeonSO.BoardSOList[currentBoardIndex]);
 
         PawnSlotUIPanel pawnSlotUI = Manager.Instance.UI.MainCanvas.GetPanel<PawnSlotUIPanel>();

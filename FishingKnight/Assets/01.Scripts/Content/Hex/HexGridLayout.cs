@@ -21,12 +21,11 @@ public class HexGridLayout : MonoBehaviour
     [ColorUsage(true, true)][SerializeField] private Color unFocusedColor;
     [SerializeField] private float transTime;
 
-    private HexGrid[,] grids;
+    [Space]
+    [SerializeField] private PawnType arrangeType;
+    public PawnType ArrangeType => arrangeType;
 
-    private void OnEnable()
-    {
-        LayoutGrid();
-    }
+    private HexGrid[,] grids;
 
     private void OnValidate()
     {
@@ -36,12 +35,12 @@ public class HexGridLayout : MonoBehaviour
         }
     }
 
-    private void LayoutGrid()
+    public void LayoutGrid()
     {
         transform.ClearChild();
 
         grids = new HexGrid[gridSize.y, gridSize.x];
-
+        
         for (int y = 0; y < gridSize.y; y++)
         {
             for(int x = 0; x < gridSize.x; x++)
@@ -66,6 +65,7 @@ public class HexGridLayout : MonoBehaviour
                 tile.transform.localPosition = GetPositionForHexFromCoordinate(new Vector2Int(x, y));
 
                 HexGrid grid = tile.AddComponent<HexGrid>();
+                grid.arrangeType = arrangeType;
                 grid.render = hexRenderer;
                 grids[y, x] = grid;
             }
@@ -121,6 +121,8 @@ public class HexGridLayout : MonoBehaviour
     {
         Vector2Int result = Vector2Int.zero;
 
+        //
+
         return result;
     }
 
@@ -128,6 +130,11 @@ public class HexGridLayout : MonoBehaviour
     {
         Vector2Int index = GetHexGridIndexByPosition(position);
 
+        return grids[index.y, index.x];
+    }
+
+    public HexGrid GetGridByIndex(Vector2Int index)
+    {
         return grids[index.y, index.x];
     }
 
