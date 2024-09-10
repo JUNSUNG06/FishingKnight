@@ -53,10 +53,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 49b6660e75a0eda40ae8743c26d9585b, type: 2}
   focusedPower: 0
   focusedColor: {r: 0.36078432, g: 1.2784314, b: 1.4980392, a: 1}
-  focusedIntensity: 2
   unFocusedPower: 1
   unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
-  unFocusedIntensity: 2
   transTime: 0.3
 --- !u!1 &6215415552893571234
 GameObject:
@@ -239,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 6582694968655634365}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.8, y: 0.45, z: 8}
+  m_LocalPosition: {x: -7.8, y: 0.45, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -257,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd6fddfbc7ce0a40b94a3f52e406823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 8, y: 7}
+  gridSize: {x: 8, y: 4}
   innerSize: 0
   outerSize: 1.2
   height: 0.2
@@ -266,8 +264,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 49b6660e75a0eda40ae8743c26d9585b, type: 2}
   focusedPower: 0
   focusedColor: {r: 0.36078432, g: 1.2784314, b: 1.4980392, a: 1}
-  focusedIntensity: 2
   unFocusedPower: 1
   unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
-  unFocusedIntensity: 2
   transTime: 0.3
