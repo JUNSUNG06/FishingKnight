@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestDungeonBoardSO
   m_EditorClassIdentifier: 
   monsterPawnArrangeInfoList:
-  - x: 8
+  - x: 7
     y: 0
     pawnSO: {fileID: 11400000, guid: 170eac78bcaf6b34faccf87d0d99f777, type: 2}
   - x: 0
