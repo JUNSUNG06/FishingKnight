@@ -12,4 +12,11 @@ public class DungeonPawnFindTargetAction : DungeonPawnFSMAction
 
         battle = pawn.GetEntityComponent<DungeonPawnBattleComponent>();
     }
+
+    public override void UpdateState()
+    {
+        base.UpdateState();
+
+        battle.FindTarget();
+    }
 }

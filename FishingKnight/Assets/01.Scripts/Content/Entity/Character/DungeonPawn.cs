@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonPawn : Character, IDrag, IArrangement
+public class DungeonPawn : Character, IDrag, IArrangement, IFocus
 {
     [SerializeField] private PawnSO info;
     public PawnSO Info => info;
@@ -60,5 +60,20 @@ public class DungeonPawn : Character, IDrag, IArrangement
     public void OnUnArrangement()
     {
         
+    }
+
+    public Entity GetEntity()
+    {
+        return this;
+    }
+
+    public void StartFocus(Entity performer)
+    {
+        Debug.Log($"start focus : {name}");
+    }
+
+    public void EndFocus(Entity performer)
+    {
+        Debug.Log($"end focus : {name}");
     }
 }

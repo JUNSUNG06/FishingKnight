@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class Dungeon : MonoBehaviour
@@ -13,6 +14,13 @@ public class Dungeon : MonoBehaviour
     private DungeonStateType stateType;
     public DungeonStateType StateType => stateType;
     public Action<DungeonStateType> OnDungeonStateChange;
+
+    private NavMeshSurface navSurface;
+
+    private void Awake()
+    {
+        navSurface = GetComponent<NavMeshSurface>();
+    }
 
     //test
     private void Start()
@@ -30,6 +38,8 @@ public class Dungeon : MonoBehaviour
         PawnSlotUIPanel pawnSlotUI = Manager.Instance.UI.MainCanvas.GetPanel<PawnSlotUIPanel>();
         pawnSlotUI.SpawnPawnAction += SpawnQueuePawn;
         pawnSlotUI.OnlyShow();
+
+        navSurface.BuildNavMesh();
 
         ChangeState(DungeonStateType.Arrangement);
     }

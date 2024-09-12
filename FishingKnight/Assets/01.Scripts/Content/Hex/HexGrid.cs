@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshCollider))]
@@ -15,6 +16,16 @@ public class HexGrid : MonoBehaviour, IFocus
 
     [Space]
     public GridType gridType;
+
+    private MeshCollider col;
+
+    private void Awake()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Grid");
+        col = GetComponent<MeshCollider>();
+        col.convex = true;
+        col.isTrigger = true;
+    }
 
     public void StartFocus(Entity performer)
     {
@@ -34,7 +45,7 @@ public class HexGrid : MonoBehaviour, IFocus
     public void Arrangement(IArrangement arrangementObject)
     {
         this.arrangementObject = arrangementObject;
-        arrangementObject.GetTransform().position = transform.position;
+        arrangementObject.GetTransform().position = transform.position + Vector3.up * 1f;
         arrangementObject.OnArrangement(this);
     }
 

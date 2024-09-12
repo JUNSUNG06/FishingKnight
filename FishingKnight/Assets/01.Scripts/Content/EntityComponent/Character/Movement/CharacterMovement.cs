@@ -46,7 +46,7 @@ public class CharacterMovement : CharacterComponent
     public Action<Vector3, Vector3/*prev, new*/> OnMoveDirectionChanged;
 
     //turn
-    [SerializeField] private float turnSpeed;
+    [SerializeField] protected float turnSpeed;
     private Coroutine turnCo;
 
     public virtual void Move()
@@ -67,7 +67,7 @@ public class CharacterMovement : CharacterComponent
         this.velocity = velocity;
     }
 
-    public void Stop()
+    public virtual void Stop()
     {
         SetMoveDirection(Vector3.zero);
         SetMoveSpeed(0f, false);

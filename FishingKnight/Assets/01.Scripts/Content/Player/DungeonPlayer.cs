@@ -12,6 +12,7 @@ public class DungeonPlayer : MonoBehaviour
 
     [Space]
     [SerializeField] private string gridTag;
+    [SerializeField] private LayerMask gridLayer;
 
     private bool isDrag;
     private IDrag dragObject;
@@ -48,7 +49,7 @@ public class DungeonPlayer : MonoBehaviour
     private void Update()
     {
         Ray ray = Manager.Instance.Camera.MainCamera.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out RaycastHit hitInfo))
+        if(Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, gridLayer))
         {
             if(hitInfo.collider.CompareTag(gridTag))
             {

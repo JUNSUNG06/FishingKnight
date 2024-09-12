@@ -15,4 +15,4 @@ MonoBehaviour:
   attackPower: 20
   attackRange: 2
   attackDelayTime: 1.5
-  targetDetectRange: 100
+  targetDetectRange: 10
