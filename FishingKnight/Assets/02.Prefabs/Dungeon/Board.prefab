@@ -57,6 +57,7 @@ MonoBehaviour:
   unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
   transTime: 0.3
   arrangeType: 0
+  gridType: 0
 --- !u!1 &3672271997708793181
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,6 +115,7 @@ MonoBehaviour:
   unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
   transTime: 0.3
   arrangeType: 1
+  gridType: 1
 --- !u!1 &6215415552893571234
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,3 +330,4 @@ MonoBehaviour:
   unFocusedColor: {r: 1.6078432, g: 0.30588236, b: 0.3764706, a: 1}
   transTime: 0.3
   arrangeType: 0
+  gridType: 1

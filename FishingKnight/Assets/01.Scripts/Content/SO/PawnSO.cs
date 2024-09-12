@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/Pawn")]
 public class PawnSO : ScriptableObject
 {
-    [SerializeField] private Pawn prefab;
+    [SerializeField] private DungeonPawn prefab;
     [SerializeField] private string pawnName;
     [SerializeField] private int price;
     [SerializeField] private Sprite image;
@@ -15,5 +15,5 @@ public class PawnSO : ScriptableObject
     public int Price => price;
     public string Description => description;
     public Sprite Image => image;
-    public Pawn Prefab => prefab;
+    public DungeonPawn Prefab => prefab;
 }

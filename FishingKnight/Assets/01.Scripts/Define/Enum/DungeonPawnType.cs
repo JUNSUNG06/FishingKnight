@@ -1,4 +1,4 @@
-public enum PawnType
+public enum DungeonPawnType
 {
     Player,
     Monster,

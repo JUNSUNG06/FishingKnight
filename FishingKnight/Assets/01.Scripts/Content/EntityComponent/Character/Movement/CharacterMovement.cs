@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CapsuleCollider))]
 public class CharacterMovement : CharacterComponent
 {
-    private Rigidbody rb;
-
     //move
-    [SerializeField] private float maxMoveSpeed;
-    [SerializeField] private float acceleation;
-    private Coroutine accelerationCo;
-    private float moveSpeed;
-    private Vector3 moveDir;
-    private Vector3 prevMoveDir;
+    [SerializeField] protected float maxMoveSpeed;
+    [SerializeField] protected float acceleation;
+    protected Coroutine accelerationCo;
+    protected float moveSpeed;
+    protected Vector3 moveDir;
+    protected Vector3 prevMoveDir;
+    protected Vector3 velocity;
+
+    protected bool enableGravity;
 
     public float MoveSpeed
     {
@@ -49,14 +49,7 @@ public class CharacterMovement : CharacterComponent
     [SerializeField] private float turnSpeed;
     private Coroutine turnCo;
 
-    public override void Initialize(Entity owner)
-    {
-        base.Initialize(owner);
-
-        rb = GetComponent<Rigidbody>();
-    }
-
-    public void Move()
+    public virtual void Move()
     {
         Vector3 velocity = Vector3.zero;
 
@@ -69,16 +62,16 @@ public class CharacterMovement : CharacterComponent
         {
             velocity = MoveDirection * MoveSpeed;
         }
-        velocity.y = rb.velocity.y;
+        velocity.y = this.velocity.y;
 
-        rb.velocity = velocity;
+        this.velocity = velocity;
     }
 
     public void Stop()
     {
         SetMoveDirection(Vector3.zero);
         SetMoveSpeed(0f, false);
-        rb.velocity = Vector3.zero;
+        velocity = Vector3.zero;
     }
 
     public void SetMoveDirection(Vector3 direction)
@@ -164,8 +157,8 @@ public class CharacterMovement : CharacterComponent
         turnCo = null;
     }
 
-    public void EnableGravity(bool value)
+    public virtual void EnableGravity(bool value)
     {
-        rb.useGravity = value;
+        enableGravity = value;
     }
 }

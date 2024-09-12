@@ -11,7 +11,10 @@ public class HexGrid : MonoBehaviour, IFocus
     public HexRenderer render;
 
     [Space]
-    public PawnType arrangeType;
+    public DungeonPawnType arrangeType;
+
+    [Space]
+    public GridType gridType;
 
     public void StartFocus(Entity performer)
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,10 @@ public class Dungeon : MonoBehaviour
     private DungeonBoard currentBoard;
     private int currentBoardIndex;
 
+    private DungeonStateType stateType;
+    public DungeonStateType StateType => stateType;
+    public Action<DungeonStateType> OnDungeonStateChange;
+
     //test
     private void Start()
     {
@@ -19,28 +24,44 @@ public class Dungeon : MonoBehaviour
     {
         currentBoardIndex = 0;
         currentBoard = Instantiate(dungeonSO.BoardPrefab, transform);
-        currentBoard.Init();
+        currentBoard.Init(this);
         currentBoard.SetBoardSo(dungeonSO.BoardSOList[currentBoardIndex]);
 
         PawnSlotUIPanel pawnSlotUI = Manager.Instance.UI.MainCanvas.GetPanel<PawnSlotUIPanel>();
-        pawnSlotUI.SpawnPawnAction += SpawnPawn;
+        pawnSlotUI.SpawnPawnAction += SpawnQueuePawn;
         pawnSlotUI.OnlyShow();
+
+        ChangeState(DungeonStateType.Arrangement);
     }
 
     public void GoNextBoard()
     {
         currentBoardIndex++;
         currentBoard = Instantiate(dungeonSO.BoardPrefab, transform);
+        currentBoard.Init(this);
         currentBoard.SetBoardSo(dungeonSO.BoardSOList[currentBoardIndex]);
     }
 
-    public void SpawnPawn(PawnSO info)
+    public void SpawnQueuePawn(PawnSO info)
     {
         HexGrid useableGrid = currentBoard.PawnQueueGridLayout.GetUseableHexGrid();
         if (useableGrid == null)
             return;
 
-        Pawn pawn = Instantiate(info.Prefab, transform);
+        DungeonPawn pawn = Instantiate(info.Prefab, transform);
+        pawn.Init(this);
         useableGrid.Arrangement(pawn);
+    }
+
+    public void ChangeState(DungeonStateType stateType)
+    {
+        this.stateType = stateType;
+
+        OnDungeonStateChange?.Invoke(stateType);
+    }
+
+    public void ChangeState(string stateName)
+    {
+        ChangeState((DungeonStateType)Enum.Parse(typeof(DungeonStateType), stateName));
     }
 }

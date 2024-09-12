@@ -99,6 +99,12 @@ public class DungeonPlayer : MonoBehaviour
             return;
         }
 
+        if(currentGrid.arrangeType == DungeonPawnType.Monster)
+        {
+            FailDrag();
+            return;
+        }
+
         if(currentGrid.ArrangementObject == null)
         {
             FailDrag();
@@ -137,7 +143,7 @@ public class DungeonPlayer : MonoBehaviour
             return;
         }
 
-        if(currentGrid.arrangeType != PawnType.Player)
+        if(currentGrid.arrangeType != DungeonPawnType.Player)
         {
             FailDrag();
             return;

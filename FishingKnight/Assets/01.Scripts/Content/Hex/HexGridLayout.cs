@@ -22,8 +22,11 @@ public class HexGridLayout : MonoBehaviour
     [SerializeField] private float transTime;
 
     [Space]
-    [SerializeField] private PawnType arrangeType;
-    public PawnType ArrangeType => arrangeType;
+    [SerializeField] private DungeonPawnType arrangeType;
+    public DungeonPawnType ArrangeType => arrangeType;
+
+    [SerializeField] private GridType gridType;
+    public GridType GridType => gridType;
 
     private HexGrid[,] grids;
 
@@ -66,6 +69,7 @@ public class HexGridLayout : MonoBehaviour
 
                 HexGrid grid = tile.AddComponent<HexGrid>();
                 grid.arrangeType = arrangeType;
+                grid.gridType = gridType;
                 grid.render = hexRenderer;
                 grids[y, x] = grid;
             }

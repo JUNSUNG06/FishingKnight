@@ -14,6 +14,19 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
+        Init();
+    }
+
+    private void Update()
+    {
+        for(int i = 0; i < comps.Count; i++)
+        {
+            comps[i].UpdateComponent();
+        }
+    }
+
+    public void Init()
+    {
         comps = new List<EntityComponent>();
         GetComponents<EntityComponent>(comps);
         foreach (EntityComponent comp in comps)
@@ -24,14 +37,6 @@ public class Entity : MonoBehaviour
         foreach (EntityComponent comp in comps)
         {
             comp.PostInitialize();
-        }
-    }
-
-    private void Update()
-    {
-        for(int i = 0; i < comps.Count; i++)
-        {
-            comps[i].UpdateComponent();
         }
     }
     

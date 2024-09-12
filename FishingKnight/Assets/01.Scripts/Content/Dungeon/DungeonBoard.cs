@@ -18,8 +18,12 @@ public class DungeonBoard : MonoBehaviour
 
     private DungeonBoardSO boardSO;
 
-    public void Init()
+    private Dungeon ownerDungeon;
+
+    public void Init(Dungeon dungeon)
     {
+        ownerDungeon = dungeon;
+
         pawnQueueGridLayout.LayoutGrid();
         boardGridLayout.LayoutGrid();
         monsterBoardGridLayout.LayoutGrid();
@@ -37,7 +41,10 @@ public class DungeonBoard : MonoBehaviour
 
     private void SpawnMonster(PawnArrangeInfo info)
     {
-        Pawn monster = Instantiate(info.pawnSO.Prefab, monsterBoardGridLayout.transform);
+        DungeonPawn monster = Instantiate(info.pawnSO.Prefab, monsterBoardGridLayout.transform);
+        monster.pawnType = DungeonPawnType.Monster;
+        monster.Init(ownerDungeon);
+
         HexGrid grid = monsterBoardGridLayout.GetGridByIndex(new Vector2Int(info.x, info.y));
         grid.Arrangement(monster);
     }
